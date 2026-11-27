@@ -2,17 +2,17 @@
 <html lang="zh-HK" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>古仙煉形築基——內煉篇 | 丹元居 實修手冊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>古仙煉形築基——內煉篇 | 丹元居 實修手冊 Pro</title>
 
   <!-- PWA & Mobile Meta Tags -->
   <meta name="theme-color" content="#1C1917" id="metaThemeColor" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="煉形築基" />
-  <meta name="description" content="丹元居《古仙煉形築基——內煉篇》開篇寄語、六大功法修習次第、動態圖解、每日打卡計時器及完整逐字稿（https://danyuanju.circle.so/）" />
+  <meta name="description" content="丹元居《古仙煉形築基——內煉篇》開篇寄語、六大功法動態圖解、防鎖屏計時節拍器、跨日修習日曆、原音伴讀及完整逐字稿（https://danyuanju.circle.so/）" />
 
-  <!-- Google Fonts: Inter + Noto Sans TC + Noto Serif TC -->
+  <!-- Google Fonts (with graceful local CJK fallback when offline) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@500;600;700;900&display=swap" rel="stylesheet">
@@ -20,65 +20,130 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'Noto Sans TC', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-            serif: ['Noto Serif TC', 'Georgia', 'serif'],
-          },
-          colors: {
-            paper: {
-              bg: '#FAF6EE',
-              card: '#FFFFFF',
-              subtle: '#F2EBDD',
-              accent: '#FDF9F0',
-              border: '#E5DEC9',
+    if (window.tailwind) {
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'Noto Sans TC', 'PingFang HK', 'Microsoft JhengHei', '-apple-system', 'sans-serif'],
+              serif: ['Noto Serif TC', 'Songti TC', 'PMingLiU', 'Georgia', 'serif'],
             },
-            obsidian: {
-              bg: '#141311',
-              card: '#1E1C19',
-              subtle: '#282520',
-              accent: '#23201B',
-              border: '#332F29',
-            },
-            gold: {
-              DEFAULT: '#B8862D',
-              bright: '#DCA84E',
-              light: '#E4C37A',
-            },
-            cinnabar: {
-              DEFAULT: '#9E2A2B',
-              bright: '#D14949',
-            },
-            jade: {
-              DEFAULT: '#2D6A4F',
-              bright: '#52B788',
+            colors: {
+              paper: {
+                bg: '#FAF6EE',
+                card: '#FFFFFF',
+                subtle: '#F2EBDD',
+                accent: '#FDF9F0',
+                border: '#E5DEC9',
+              },
+              obsidian: {
+                bg: '#141311',
+                card: '#1E1C19',
+                subtle: '#282520',
+                accent: '#23201B',
+                border: '#332F29',
+              },
+              gold: {
+                DEFAULT: '#B8862D',
+                bright: '#DCA84E',
+                light: '#E4C37A',
+              },
+              cinnabar: {
+                DEFAULT: '#9E2A2B',
+                bright: '#D14949',
+              },
+              jade: {
+                DEFAULT: '#2D6A4F',
+                bright: '#52B788',
+              }
             }
           }
         }
-      }
-    };
+      };
+    }
   </script>
 
   <style>
-    /* Subtle Xuan-paper dot texture & animations */
+    /* =================================================================
+       TRUE OFFLINE FALLBACK & CORE THEME TOKENS
+       Ensures 100% aesthetics even in Airplane Mode without CDN!
+       ================================================================= */
+    :root {
+      --bg-page: #FAF6EE;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F2EBDD;
+      --bg-accent: #FDF9F0;
+      --border-main: #E5DEC9;
+      --text-primary: #1F1D1A;
+      --text-secondary: #57524A;
+      --text-muted: #8A8275;
+      --color-gold: #B8862D;
+      --color-cinnabar: #9E2A2B;
+      --color-jade: #2D6A4F;
+    }
+    html.dark {
+      --bg-page: #141311;
+      --bg-card: #1E1C19;
+      --bg-subtle: #282520;
+      --bg-accent: #23201B;
+      --border-main: #332F29;
+      --text-primary: #F3EFE6;
+      --text-secondary: #C4BCAE;
+      --text-muted: #8A8275;
+      --color-gold: #DCA84E;
+      --color-cinnabar: #D14949;
+      --color-jade: #52B788;
+    }
+
+    * { box-sizing: border-box; }
     body {
+      margin: 0;
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      font-family: 'Inter', 'Noto Sans TC', 'PingFang HK', 'Microsoft JhengHei', -apple-system, sans-serif;
+      line-height: 1.7;
       background-image: radial-gradient(rgba(184, 134, 45, 0.14) 0.75px, transparent 0.75px);
       background-size: 28px 28px;
+      padding-bottom: 4.5rem; /* Space for mobile bottom tab bar */
+    }
+    @media (min-width: 1024px) {
+      body { padding-bottom: 0; }
     }
     .dark body {
       background-image: radial-gradient(rgba(220, 168, 78, 0.1) 0.75px, transparent 0.75px);
     }
+    .font-serif, h1, h2, h3, h4 {
+      font-family: 'Noto Serif TC', 'Songti TC', 'PMingLiU', Georgia, serif;
+    }
 
+    /* Essential Offline Utility Fallbacks if Tailwind CDN is unreachable */
+    .hidden { display: none !important; }
+    .offline-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-main);
+      border-radius: 1rem;
+    }
+    button, a { cursor: pointer; }
+
+    /* Alchemical Emblem & Tuoyue Breathing Animations */
     @keyframes slowSpin {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
     @keyframes pulseGlow {
-      0%, 100% { opacity: 0.65; transform: scale(0.98); }
+      0%, 100% { opacity: 0.62; transform: scale(0.98); }
       50% { opacity: 1; transform: scale(1.03); }
+    }
+    @keyframes breathSpineFlow {
+      0%   { cy: 58; r: 9; opacity: 0.95; }
+      35%  { cy: 142; r: 13; opacity: 0.9; }
+      70%  { cy: 212; r: 15; opacity: 0.85; }
+      100% { cy: 58; r: 9; opacity: 0.95; }
+    }
+    @keyframes breathExpand {
+      0%, 100% { transform: scaleX(1); opacity: 0.35; }
+      50% { transform: scaleX(1.32); opacity: 0.75; }
     }
     .ring-rotate {
       transform-origin: 160px 160px;
@@ -87,6 +152,13 @@
     .core-pulse {
       transform-origin: 160px 160px;
       animation: pulseGlow 5s ease-in-out infinite;
+    }
+    .tuoyue-active .breath-orb {
+      animation: breathSpineFlow 6s ease-in-out infinite;
+    }
+    .tuoyue-active .spine-membrane-aura {
+      transform-origin: 130px 140px;
+      animation: breathExpand 6s ease-in-out infinite;
     }
 
     .svg-hotspot {
@@ -97,19 +169,29 @@
       filter: drop-shadow(0 0 10px #E5A93B);
     }
 
+    /* Search Highlight & Active Match Focus */
     mark.hl {
-      background: rgba(228, 195, 122, 0.65);
+      background: rgba(228, 195, 122, 0.55);
       color: inherit;
       padding: 0 3px;
       border-radius: 4px;
+      transition: all 0.2s;
     }
+    mark.hl.current-match {
+      background: #9E2A2B;
+      color: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(158, 42, 43, 0.3);
+    }
+
+    /* Dynamic Transcript Font Sizes */
+    .ts-size-sm p { font-size: 0.9rem; line-height: 1.75; }
+    .ts-size-md p { font-size: 1rem; line-height: 1.85; }
+    .ts-size-lg p { font-size: 1.15rem; line-height: 1.95; }
 
     /* =================================================================
        PRINT / SAVE AS PDF STYLESHEET (Clean A4 Document Output)
        ================================================================= */
-    .print-only {
-      display: none;
-    }
+    .print-only { display: none; }
     @media print {
       @page {
         size: A4 portrait;
@@ -121,16 +203,16 @@
         color: #111111 !important;
         font-size: 10.5pt;
         line-height: 1.6;
+        padding-bottom: 0 !important;
       }
-      .no-print {
-        display: none !important;
-      }
-      .print-only {
-        display: block !important;
-      }
+      .no-print { display: none !important; }
+      .print-only { display: block !important; }
       .print-avoid-break {
         break-inside: avoid;
         page-break-inside: avoid;
+      }
+      .transcript-body {
+        display: block !important; /* Expand all folded chapters when printing */
       }
       .method-card {
         display: block !important;
@@ -156,64 +238,89 @@
 <body class="bg-paper-bg text-[#1F1D1A] dark:bg-obsidian-bg dark:text-[#F3EFE6] font-sans antialiased transition-colors duration-300">
 
   <!-- Toast Notification -->
-  <div id="toastNotification" class="no-print fixed bottom-6 right-6 z-[200] transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 bg-[#1F1D1A] dark:bg-gold-bright text-white dark:text-[#141311] px-5 py-3 rounded-2xl shadow-xl font-medium text-sm flex items-center gap-2">
-    <span>✅</span>
-    <span id="toastMessage">已複製連結</span>
+  <div id="toastNotification" class="no-print fixed bottom-20 lg:bottom-6 right-4 sm:right-6 z-[200] transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 bg-[#1F1D1A] dark:bg-gold-bright text-white dark:text-[#141311] px-4 py-3 rounded-2xl shadow-xl font-medium text-xs sm:text-sm flex items-center gap-2 max-w-xs sm:max-w-md">
+    <span>✨</span>
+    <span id="toastMessage">提示訊息</span>
   </div>
 
   <!-- Top Sticky Navigation & Action Bar -->
-  <header class="no-print sticky top-0 z-50 backdrop-blur-md bg-paper-bg/90 dark:bg-obsidian-bg/90 border-b border-paper-border dark:border-obsidian-border px-4 py-3 transition-colors">
-    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+  <header class="no-print sticky top-0 z-50 backdrop-blur-md bg-paper-bg/90 dark:bg-obsidian-bg/90 border-b border-paper-border dark:border-obsidian-border px-3 sm:px-4 py-2.5 transition-colors">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-2.5">
       <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-2.5 group">
-        <span class="bg-cinnabar text-white font-serif font-bold text-xs px-2 py-1 rounded tracking-widest shadow-sm border border-white/25">丹元居</span>
-        <span class="font-serif font-bold text-base sm:text-lg tracking-wide group-hover:text-gold dark:group-hover:text-gold-bright transition-colors">古仙煉形築基 · 內煉篇</span>
+      <a href="#" class="flex items-center gap-2 group">
+        <span class="bg-cinnabar text-white font-serif font-bold text-xs px-2 py-0.5 rounded tracking-widest shadow-sm border border-white/25">丹元居</span>
+        <span class="font-serif font-bold text-sm sm:text-lg tracking-wide group-hover:text-gold dark:group-hover:text-gold-bright transition-colors">古仙煉形築基 · 內煉篇</span>
       </a>
 
-      <!-- Quick Section Navigation -->
+      <!-- Desktop Section Navigation -->
       <nav class="hidden lg:flex items-center gap-1 text-sm font-medium text-[#57524A] dark:text-[#C4BCAE]">
-        <a href="#philosophy" class="px-3 py-1.5 rounded-full hover:text-gold dark:hover:text-gold-bright hover:bg-gold/10 transition">築基心法</a>
-        <a href="#six-methods" class="px-3 py-1.5 rounded-full hover:text-gold dark:hover:text-gold-bright hover:bg-gold/10 transition">六法圖解</a>
-        <a href="#schedule" class="px-3 py-1.5 rounded-full hover:text-gold dark:hover:text-gold-bright hover:bg-gold/10 transition">修習課表</a>
-        <a href="#tracker" class="px-3 py-1.5 rounded-full hover:text-gold dark:hover:text-gold-bright hover:bg-gold/10 transition">實修打卡</a>
-        <a href="#verification" class="px-3 py-1.5 rounded-full hover:text-gold dark:hover:text-gold-bright hover:bg-gold/10 transition">驗效標準</a>
-        <a href="#transcript" class="px-3 py-1.5 rounded-full hover:text-gold dark:hover:text-gold-bright hover:bg-gold/10 transition">完整逐字稿</a>
+        <a href="#philosophy" class="px-2.5 py-1.5 rounded-full hover:text-gold dark:hover:text-gold-bright hover:bg-gold/10 transition">築基心法</a>
+        <a href="#six-methods" class="px-2.5 py-1.5 rounded-full hover:text-gold dark:hover:text-gold-bright hover:bg-gold/10 transition">六法圖解</a>
+        <a href="#tracker" class="px-2.5 py-1.5 rounded-full hover:text-gold dark:hover:text-gold-bright hover:bg-gold/10 transition">練功打卡</a>
+        <a href="#audio-companion" class="px-2.5 py-1.5 rounded-full hover:text-gold dark:hover:text-gold-bright hover:bg-gold/10 transition">原音伴讀</a>
+        <a href="#verification" class="px-2.5 py-1.5 rounded-full hover:text-gold dark:hover:text-gold-bright hover:bg-gold/10 transition">七大效驗</a>
+        <a href="#transcript" class="px-2.5 py-1.5 rounded-full hover:text-gold dark:hover:text-gold-bright hover:bg-gold/10 transition">逐字稿</a>
       </nav>
 
       <!-- Action & Export Buttons -->
-      <div class="flex flex-wrap items-center gap-2">
+      <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
         <a href="https://danyuanju.circle.so/" target="_blank" rel="noopener noreferrer"
-           class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold border border-gold/50 bg-gold/10 text-gold dark:text-gold-bright hover:bg-gold hover:text-white dark:hover:bg-gold-bright dark:hover:text-[#141311] transition shadow-sm"
+           class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold border border-gold/50 bg-gold/10 text-gold dark:text-gold-bright hover:bg-gold hover:text-white dark:hover:bg-gold-bright dark:hover:text-[#141311] transition shadow-sm"
            title="前往丹元居 Circle 官方線上學堂">
-          <span>🏯 進入學堂</span>
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          <span>🏯 學堂</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
         </a>
-        <button onclick="toggleTheme()" id="themeBtn" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card hover:border-gold transition">
+        <button onclick="toggleTheme()" id="themeBtn" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card hover:border-gold transition">
           🌙 玄夜
         </button>
-        <button onclick="openPwaModal()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card hover:border-gold transition">
-          📲 安裝 App
+        <button onclick="openPwaModal()" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card hover:border-gold transition">
+          📲 App
         </button>
-        <button onclick="window.print()" class="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#C8963E] to-[#9E6F21] text-white shadow hover:opacity-95 transition">
-          🖨️ 列印 / PDF
+        <button onclick="prepareAndPrint()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-[#C8963E] to-[#9E6F21] text-white shadow hover:opacity-95 transition">
+          🖨️ PDF
         </button>
-        <button onclick="exportToWord()" class="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-cinnabar dark:bg-cinnabar-bright text-white shadow hover:opacity-95 transition">
-          📄 匯出 Word
+        <button onclick="exportToWord()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-cinnabar dark:bg-cinnabar-bright text-white shadow hover:opacity-95 transition">
+          📄 Word
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Print-Only Official Source Banner -->
+  <!-- Mobile Bottom Tab Bar (Thumb-friendly App Navigation) -->
+  <nav class="no-print lg:hidden fixed bottom-0 inset-x-0 z-50 backdrop-blur-lg bg-paper-card/95 dark:bg-obsidian-card/95 border-t border-paper-border dark:border-obsidian-border px-2 py-1.5 flex items-center justify-around shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+    <a href="#philosophy" class="flex flex-col items-center py-1 px-2 text-[11px] font-semibold text-[#57524A] dark:text-[#C4BCAE] hover:text-gold dark:hover:text-gold-bright">
+      <span class="text-base leading-none mb-0.5">☯️</span>
+      <span>心法</span>
+    </a>
+    <a href="#six-methods" class="flex flex-col items-center py-1 px-2 text-[11px] font-semibold text-[#57524A] dark:text-[#C4BCAE] hover:text-gold dark:hover:text-gold-bright">
+      <span class="text-base leading-none mb-0.5">🧘</span>
+      <span>六法</span>
+    </a>
+    <a href="#tracker" class="flex flex-col items-center py-1 px-2 text-[11px] font-semibold text-gold dark:text-gold-bright">
+      <span class="text-base leading-none mb-0.5">⏱️</span>
+      <span>練功房</span>
+    </a>
+    <a href="#audio-companion" class="flex flex-col items-center py-1 px-2 text-[11px] font-semibold text-[#57524A] dark:text-[#C4BCAE] hover:text-gold dark:hover:text-gold-bright">
+      <span class="text-base leading-none mb-0.5">🎧</span>
+      <span>原音</span>
+    </a>
+    <a href="#transcript" class="flex flex-col items-center py-1 px-2 text-[11px] font-semibold text-[#57524A] dark:text-[#C4BCAE] hover:text-gold dark:hover:text-gold-bright">
+      <span class="text-base leading-none mb-0.5">📜</span>
+      <span>逐字稿</span>
+    </a>
+  </nav>
+
+  <!-- Print-Only Official Source Banner & Personal Practice Summary -->
   <div class="print-only border-b-2 border-cinnabar pb-3 mb-5">
     <div style="display:flex;justify-content:space-between;align-items:baseline;">
-      <strong style="font-family:'Noto Serif TC',serif;font-size:11pt;color:#9E2A2B;">丹元居 ·《古仙煉形築基——內煉篇》實修講義</strong>
-      <span style="font-size:9.5pt;color:#57524A;">官方學堂網址：https://danyuanju.circle.so/</span>
+      <strong style="font-family:'Noto Serif TC',serif;font-size:11pt;color:#9E2A2B;">丹元居 ·《古仙煉形築基——內煉篇》實修講義與個人進度報告</strong>
+      <span style="font-size:9.5pt;color:#57524A;">官方學堂：https://danyuanju.circle.so/</span>
     </div>
+    <div id="printPersonalSummary" style="margin-top:8pt;padding:8pt;border:1px solid #D6CEBC;background:#FAF6EE;font-size:9.5pt;"></div>
   </div>
 
   <!-- Hero Section -->
-  <section class="relative overflow-hidden py-10 sm:py-14 px-4 border-b border-paper-border dark:border-obsidian-border bg-[radial-gradient(circle_at_50%_35%,rgba(228,195,122,0.2),transparent_70%)]">
+  <section class="relative overflow-hidden py-9 sm:py-14 px-4 border-b border-paper-border dark:border-obsidian-border bg-[radial-gradient(circle_at_50%_35%,rgba(228,195,122,0.2),transparent_70%)]">
     <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
       <!-- Left Hero Content -->
       <div class="lg:col-span-7 text-center lg:text-left">
@@ -232,8 +339,8 @@
           煉形築基並非「從無到有」盲目疊加周天與神通，而是做<strong>「減法」與「恢復」</strong>——拿掉積累數十年的肌肉代償、筋膜塌縮、淺短呼吸與邏輯腦隔膜，將身體、氣機、心感與三維立體空間感重新合為一體。
         </p>
 
-        <!-- Official Course Portal Card / Quick Access Strip -->
-        <div class="no-print mb-6 p-3.5 rounded-2xl bg-paper-card/90 dark:bg-obsidian-card/90 border border-gold/40 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 max-w-2xl mx-auto lg:mx-0">
+        <!-- Official Course Portal Card -->
+        <div class="no-print mb-6 p-3.5 rounded-2xl offline-card bg-paper-card/90 dark:bg-obsidian-card/90 border border-gold/40 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 max-w-2xl mx-auto lg:mx-0">
           <div class="flex items-center gap-3 text-left">
             <div class="w-10 h-10 rounded-xl bg-cinnabar/10 dark:bg-cinnabar-bright/20 text-cinnabar dark:text-cinnabar-bright flex items-center justify-center font-serif font-bold text-lg shrink-0">
               丹
@@ -250,7 +357,7 @@
               📋 複製網址
             </button>
             <a href="https://danyuanju.circle.so/" target="_blank" rel="noopener noreferrer" class="px-4 py-1.5 rounded-xl text-xs font-semibold bg-gradient-to-r from-[#C8963E] to-[#9E6F21] text-white shadow hover:opacity-95 transition inline-flex items-center gap-1">
-              <span>前往觀看原片</span>
+              <span>觀看原片</span>
               <span>↗</span>
             </a>
           </div>
@@ -258,15 +365,15 @@
 
         <!-- Highlights -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div class="print-avoid-break bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-3.5 shadow-sm">
+          <div class="print-avoid-break offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-3.5 shadow-sm">
             <div class="font-serif text-xl font-bold text-gold dark:text-gold-bright">六大功法</div>
             <div class="text-xs text-[#57524A] dark:text-[#C4BCAE] mt-0.5">形 · 氣 · 心 · 內外空間閉環</div>
           </div>
-          <div class="print-avoid-break bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-3.5 shadow-sm">
+          <div class="print-avoid-break offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-3.5 shadow-sm">
             <div class="font-serif text-xl font-bold text-gold dark:text-gold-bright">三階次第</div>
             <div class="text-xs text-[#57524A] dark:text-[#C4BCAE] mt-0.5">首日四法同修 · 滿週進陽火</div>
           </div>
-          <div class="print-avoid-break bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-3.5 shadow-sm">
+          <div class="print-avoid-break offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-3.5 shadow-sm">
             <div class="font-serif text-xl font-bold text-gold dark:text-gold-bright">三維空間感</div>
             <div class="text-xs text-[#57524A] dark:text-[#C4BCAE] mt-0.5">破除平面切片 · 重回真實生命</div>
           </div>
@@ -275,7 +382,7 @@
 
       <!-- Right Animated Alchemical Golden Brush Circle SVG -->
       <div class="lg:col-span-5 flex justify-center items-center no-print">
-        <a href="https://danyuanju.circle.so/" target="_blank" rel="noopener noreferrer" title="點擊前往丹元居官方學堂 https://danyuanju.circle.so/" class="group block w-full max-w-[290px] transition-transform duration-300 hover:scale-[1.03]">
+        <a href="https://danyuanju.circle.so/" target="_blank" rel="noopener noreferrer" title="點擊前往丹元居官方學堂 https://danyuanju.circle.so/" class="group block w-full max-w-[280px] transition-transform duration-300 hover:scale-[1.03]">
           <svg class="w-full h-auto drop-shadow-[0_12px_28px_rgba(184,134,45,0.22)]" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-label="丹元居徽章">
             <defs>
               <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -316,7 +423,7 @@
   <main class="max-w-6xl mx-auto px-4 py-10 space-y-14">
 
     <!-- Section 1: Core Philosophy -->
-    <section id="philosophy" class="scroll-mt-24">
+    <section id="philosophy" class="scroll-mt-20">
       <div class="border-b-2 border-paper-border dark:border-obsidian-border pb-3 mb-6">
         <span class="text-xs uppercase tracking-widest text-cinnabar dark:text-cinnabar-bright font-bold block mb-1">Core Philosophy · 為什麼要築基</span>
         <h2 class="font-serif text-2xl sm:text-3xl font-bold">破除盲目疊加：從「失常」回到「正常」</h2>
@@ -324,7 +431,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-7">
         <!-- Wrong Approach -->
-        <div class="print-avoid-break bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border border-t-4 border-t-cinnabar rounded-2xl p-6 shadow-sm">
+        <div class="print-avoid-break offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border border-t-4 border-t-cinnabar rounded-2xl p-6 shadow-sm">
           <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-cinnabar/10 text-cinnabar dark:text-cinnabar-bright mb-3">
             ❌ 市面常見誤區：在異常結構上強行疊加
           </span>
@@ -340,7 +447,7 @@
         </div>
 
         <!-- Correct Approach -->
-        <div class="print-avoid-break bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border border-t-4 border-t-jade rounded-2xl p-6 shadow-sm">
+        <div class="print-avoid-break offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border border-t-4 border-t-jade rounded-2xl p-6 shadow-sm">
           <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-jade/15 text-jade dark:text-jade-bright mb-3">
             ✅ 煉形築基核心：先做「減法」，本自具足
           </span>
@@ -358,27 +465,27 @@
 
       <!-- 5 Recovery Pillars -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
-        <div class="print-avoid-break bg-paper-accent dark:bg-obsidian-accent border border-paper-border dark:border-obsidian-border rounded-2xl p-4 text-center hover:border-gold transition">
+        <div class="print-avoid-break offline-card bg-paper-accent dark:bg-obsidian-accent border border-paper-border dark:border-obsidian-border rounded-2xl p-4 text-center hover:border-gold transition">
           <div class="text-2xl mb-1.5">🦴</div>
           <h4 class="font-serif font-bold text-gold dark:text-gold-bright mb-1">恢復身體結構</h4>
           <p class="text-xs text-[#57524A] dark:text-[#C4BCAE] leading-relaxed">調回錯位骨骼間架，騰起塌縮黏連筋膜，消除局部肌肉代償</p>
         </div>
-        <div class="print-avoid-break bg-paper-accent dark:bg-obsidian-accent border border-paper-border dark:border-obsidian-border rounded-2xl p-4 text-center hover:border-gold transition">
+        <div class="print-avoid-break offline-card bg-paper-accent dark:bg-obsidian-accent border border-paper-border dark:border-obsidian-border rounded-2xl p-4 text-center hover:border-gold transition">
           <div class="text-2xl mb-1.5">🌬️</div>
           <h4 class="font-serif font-bold text-gold dark:text-gold-bright mb-1">恢復深層呼吸</h4>
           <p class="text-xs text-[#57524A] dark:text-[#C4BCAE] leading-relaxed">深層膜結構鼓盪貼近脊柱，由上田至中下田自然聯動養息</p>
         </div>
-        <div class="print-avoid-break bg-paper-accent dark:bg-obsidian-accent border border-paper-border dark:border-obsidian-border rounded-2xl p-4 text-center hover:border-gold transition">
+        <div class="print-avoid-break offline-card bg-paper-accent dark:bg-obsidian-accent border border-paper-border dark:border-obsidian-border rounded-2xl p-4 text-center hover:border-gold transition">
           <div class="text-2xl mb-1.5">⚡</div>
           <h4 class="font-serif font-bold text-gold dark:text-gold-bright mb-1">恢復整體力線</h4>
           <p class="text-xs text-[#57524A] dark:text-[#C4BCAE] leading-relaxed">找回足底中心點，借前掌與足跟合勁由足底向上整體傳導</p>
         </div>
-        <div class="print-avoid-break bg-paper-accent dark:bg-obsidian-accent border border-paper-border dark:border-obsidian-border rounded-2xl p-4 text-center hover:border-gold transition">
+        <div class="print-avoid-break offline-card bg-paper-accent dark:bg-obsidian-accent border border-paper-border dark:border-obsidian-border rounded-2xl p-4 text-center hover:border-gold transition">
           <div class="text-2xl mb-1.5">🫀</div>
           <h4 class="font-serif font-bold text-gold dark:text-gold-bright mb-1">恢復通透心感</h4>
           <p class="text-xs text-[#57524A] dark:text-[#C4BCAE] leading-relaxed">繞過大腦邏輯解釋，直接感受並解開胸口堵、空、慌、恐</p>
         </div>
-        <div class="print-avoid-break bg-paper-accent dark:bg-obsidian-accent border border-paper-border dark:border-obsidian-border rounded-2xl p-4 text-center hover:border-gold transition sm:col-span-2 lg:col-span-1">
+        <div class="print-avoid-break offline-card bg-paper-accent dark:bg-obsidian-accent border border-paper-border dark:border-obsidian-border rounded-2xl p-4 text-center hover:border-gold transition sm:col-span-2 lg:col-span-1">
           <div class="text-2xl mb-1.5">🌐</div>
           <h4 class="font-serif font-bold text-gold dark:text-gold-bright mb-1">恢復三維空間</h4>
           <p class="text-xs text-[#57524A] dark:text-[#C4BCAE] leading-relaxed">身內空間與身外空間相合，破除旁觀隔膜感，真實進入世界</p>
@@ -386,8 +493,8 @@
       </div>
     </section>
 
-    <!-- Section 2: Interactive Body Map & Six Methods -->
-    <section id="six-methods" class="scroll-mt-24">
+    <!-- Section 2: Interactive Body Map (with Animated Tuoyue Breathing) & Six Methods -->
+    <section id="six-methods" class="scroll-mt-20">
       <div class="flex flex-wrap items-end justify-between gap-3 border-b-2 border-paper-border dark:border-obsidian-border pb-3 mb-6">
         <div>
           <span class="text-xs uppercase tracking-widest text-cinnabar dark:text-cinnabar-bright font-bold block mb-1">Six Core Practices · 形氣心空間閉環</span>
@@ -397,12 +504,17 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
-        <!-- Left Sticky SVG Meridian / Structure Figure -->
-        <div class="no-print lg:col-span-4 lg:sticky lg:top-24 bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-5 text-center shadow-sm">
-          <h4 class="font-serif font-bold text-base mb-1">內煉結構與三田力線圖</h4>
-          <p class="text-xs text-[#8A8275] mb-3">點擊部位或右側卡片檢視要領</p>
+        <!-- Left Sticky SVG Meridian / Structure Figure + Tuoyue Visual Guide -->
+        <div id="bodyFigureWrapper" class="no-print tuoyue-active lg:col-span-4 lg:sticky lg:top-20 offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-5 text-center shadow-sm">
+          <div class="flex items-center justify-between gap-2 mb-1">
+            <h4 class="font-serif font-bold text-base">內煉結構與三田力線圖</h4>
+            <button onclick="toggleTuoyueAnim()" id="tuoyueBtn" class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-jade/15 text-jade dark:text-jade-bright border border-jade/40 transition">
+              🌬️ 橐籥導引：開
+            </button>
+          </div>
+          <p class="text-xs text-[#8A8275] mb-2">金珠示範氣息貼近脊柱膜結構：上田 → 中田 → 下田鼓盪</p>
 
-          <svg class="w-full max-w-[240px] h-auto mx-auto my-2" viewBox="0 0 260 440" xmlns="http://www.w3.org/2000/svg">
+          <svg class="w-full max-w-[235px] h-auto mx-auto my-1" viewBox="0 0 260 440" xmlns="http://www.w3.org/2000/svg">
             <!-- Outer 3D Space Field (Method 6) -->
             <g id="zone-6" class="svg-hotspot" onclick="selectMethod(6)">
               <ellipse cx="130" cy="215" rx="116" ry="195" fill="none" stroke="#C89232" stroke-width="1.8" stroke-dasharray="6 6" opacity="0.45" />
@@ -413,26 +525,31 @@
             <path d="M130 34 C146 34 156 46 156 62 C156 76 147 86 142 92 L176 108 C188 114 194 126 194 144 L194 222 C194 230 184 232 180 224 L174 148 L166 232 L174 388 L186 404 L152 408 L144 268 L130 268 L116 268 L108 408 L74 404 L86 388 L94 232 L86 148 L80 224 C76 232 66 230 66 222 L66 144 C66 126 72 114 84 108 L118 92 C113 86 104 76 104 62 C104 46 114 34 130 34 Z"
                   fill="rgba(184,134,45,0.08)" stroke="#B8862D" stroke-width="2" />
 
+            <!-- Deep Spinal Membrane Aura (Animated in Tuoyue Mode) -->
+            <ellipse cx="130" cy="140" rx="18" ry="88" fill="rgba(45,106,79,0.16)" class="spine-membrane-aura" />
+
             <!-- Central Axis / Spine Deep Membrane (Method 3) -->
             <g id="zone-3" class="svg-hotspot" onclick="selectMethod(3)">
-              <line x1="130" y1="56" x2="130" y2="402" stroke="#2D6A4F" stroke-width="6" stroke-linecap="round" opacity="0.35" />
-              <polygon points="130,398 123,384 137,384" fill="#2D6A4F" opacity="0.8" />
+              <line x1="130" y1="56" x2="130" y2="402" stroke="#2D6A4F" stroke-width="6" stroke-linecap="round" opacity="0.38" />
+              <polygon points="130,398 123,384 137,384" fill="#2D6A4F" opacity="0.85" />
             </g>
 
             <!-- Three Dantians & Deep Spine Membrane (Method 1) -->
             <g id="zone-1" class="svg-hotspot active" onclick="selectMethod(1)">
-              <circle cx="130" cy="58" r="11" fill="#C89232" opacity="0.85" />
+              <circle cx="130" cy="58" r="10" fill="#C89232" opacity="0.75" />
               <text x="166" y="62" font-size="10" fill="currentColor" opacity="0.75">上田</text>
-              <circle cx="130" cy="142" r="13" fill="#C89232" opacity="0.85" />
+              <circle cx="130" cy="142" r="12" fill="#C89232" opacity="0.75" />
               <text x="168" y="146" font-size="10" fill="currentColor" opacity="0.75">中田</text>
-              <circle cx="130" cy="212" r="14" fill="#C89232" opacity="0.85" />
+              <circle cx="130" cy="212" r="13" fill="#C89232" opacity="0.75" />
               <text x="168" y="216" font-size="10" fill="currentColor" opacity="0.75">下田</text>
-              <path d="M130 70 Q122 140 130 212" fill="none" stroke="#C89232" stroke-width="3" stroke-dasharray="3 3" />
+              <path d="M130 70 Q122 140 130 212" fill="none" stroke="#C89232" stroke-width="2.5" stroke-dasharray="3 3" />
+              <!-- Animated Tuoyue Flowing Breath Orb -->
+              <circle cx="130" cy="58" r="9" fill="#52B788" stroke="#FFFFFF" stroke-width="1.5" class="breath-orb" />
             </g>
 
             <!-- Heart Sensation / Chest Space (Method 4) -->
             <g id="zone-4" class="svg-hotspot" onclick="selectMethod(4)">
-              <circle cx="130" cy="142" r="24" fill="rgba(158, 42, 43, 0.22)" stroke="#9E2A2B" stroke-width="2" />
+              <circle cx="130" cy="142" r="24" fill="rgba(158, 42, 43, 0.2)" stroke="#9E2A2B" stroke-width="2" />
             </g>
 
             <!-- Upward Force Line / Yang Fire (Method 5) -->
@@ -449,7 +566,7 @@
             </g>
           </svg>
 
-          <div id="zoneCaption" class="mt-3 p-3 rounded-xl bg-paper-subtle dark:bg-obsidian-subtle text-gold dark:text-gold-bright text-xs sm:text-sm font-semibold min-h-[3.2rem] flex items-center justify-center">
+          <div id="zoneCaption" class="mt-2 p-3 rounded-xl bg-paper-subtle dark:bg-obsidian-subtle text-gold dark:text-gold-bright text-xs sm:text-sm font-semibold min-h-[3.2rem] flex items-center justify-center">
             【第 1 法 · 息法】深層膜結構貼近脊柱鼓盪，由上田鬆開漸合中、下三田
           </div>
         </div>
@@ -614,13 +731,13 @@
     </section>
 
     <!-- Section 3: Master Schedule Table -->
-    <section id="schedule" class="scroll-mt-24">
+    <section id="schedule" class="scroll-mt-20">
       <div class="border-b-2 border-paper-border dark:border-obsidian-border pb-3 mb-6">
         <span class="text-xs uppercase tracking-widest text-cinnabar dark:text-cinnabar-bright font-bold block mb-1">Training Matrix · 修習次第總表</span>
         <h2 class="font-serif text-2xl sm:text-3xl font-bold">六法閉環分工與每日課表一覽</h2>
       </div>
 
-      <div class="overflow-x-auto bg-paper-card dark:bg-obsidian-card rounded-2xl border border-paper-border dark:border-obsidian-border shadow-sm">
+      <div class="overflow-x-auto offline-card bg-paper-card dark:bg-obsidian-card rounded-2xl border border-paper-border dark:border-obsidian-border shadow-sm">
         <table class="schedule-table w-full border-collapse text-sm min-w-[720px]">
           <thead>
             <tr class="bg-paper-subtle dark:bg-obsidian-subtle border-b-2 border-paper-border dark:border-obsidian-border text-left">
@@ -679,31 +796,62 @@
       </div>
     </section>
 
-    <!-- Section 4: Interactive Daily Practice Tracker (No-Print) -->
-    <section id="tracker" class="no-print scroll-mt-24">
-      <div class="flex flex-wrap items-end justify-between gap-3 border-b-2 border-paper-border dark:border-obsidian-border pb-3 mb-6">
+    <!-- Section 4: Upgraded Interactive Dojo (Wake Lock, Timestamp Timer, 10-Rep Pacer, 7-Day Unlock & History) -->
+    <section id="tracker" class="no-print scroll-mt-20">
+      <div class="flex flex-wrap items-end justify-between gap-3 border-b-2 border-paper-border dark:border-obsidian-border pb-3 mb-5">
         <div>
-          <span class="text-xs uppercase tracking-widest text-cinnabar dark:text-cinnabar-bright font-bold block mb-1">Interactive Dojo · 實修輔助工具</span>
-          <h2 class="font-serif text-2xl sm:text-3xl font-bold">今日功課計時與打卡器（自動本機儲存）</h2>
+          <span class="text-xs uppercase tracking-widest text-cinnabar dark:text-cinnabar-bright font-bold block mb-1">Interactive Dojo Pro · 智慧練功房</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold">防鎖屏計時、免提報數節拍器與修習日曆</h2>
         </div>
-        <div class="flex items-center gap-3">
-          <span id="todayDateBadge" class="text-xs sm:text-sm text-[#57524A] dark:text-[#C4BCAE] font-semibold"></span>
+        <div class="flex flex-wrap items-center gap-2">
+          <span id="wakeLockBadge" class="text-xs px-2.5 py-1 rounded-full bg-paper-subtle dark:bg-obsidian-subtle text-[#8A8275] font-medium">
+            🌙 待命狀態（計時啟動自動防熄芒）
+          </span>
+          <button onclick="exportBackupJSON()" class="px-3 py-1 rounded-full text-xs font-semibold border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card hover:border-gold transition">
+            💾 備份 JSON
+          </button>
+          <label class="px-3 py-1 rounded-full text-xs font-semibold border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card hover:border-gold transition cursor-pointer">
+            📂 還原備份
+            <input type="file" accept=".json,application/json" class="hidden" onchange="importBackupJSON(event)" />
+          </label>
           <button onclick="openResetModal()" class="px-3 py-1 rounded-full text-xs font-semibold border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card hover:border-cinnabar hover:text-cinnabar transition">
-            重置今日
+            重置當日
           </button>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
-        <!-- Tool 1: 開足弓 2-min / 60-min Timer -->
-        <div class="bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+      <!-- 7-Day Foundation Unlock Progress Banner -->
+      <div id="sevenDayBanner" class="mb-6 p-4 rounded-2xl offline-card bg-paper-accent dark:bg-obsidian-accent border border-gold/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span id="unlockStatusIcon" class="text-lg">🌱</span>
+            <h4 class="font-serif font-bold text-sm sm:text-base" id="unlockStatusTitle">首週築基進度：累計已修習 0 / 7 天</h4>
+          </div>
+          <p class="text-xs text-[#57524A] dark:text-[#C4BCAE] mt-0.5" id="unlockStatusDesc">
+            首週請專注前四法（練腳、練自由落體）；累計打卡滿 7 天後，即可加入第 5 法「恢復力線進陽火」！
+          </p>
+        </div>
+        <div class="sm:w-56 shrink-0">
+          <div class="flex justify-between text-xs font-semibold mb-1">
+            <span id="activeDateLabel">📅 當前檢視：今日</span>
+            <span id="totalDaysCountText" class="text-gold dark:text-gold-bright">0 / 7 天</span>
+          </div>
+          <div class="w-full h-2.5 bg-paper-subtle dark:bg-obsidian-subtle rounded-full overflow-hidden">
+            <div id="sevenDayFill" class="h-full bg-gradient-to-r from-gold to-jade rounded-full transition-all duration-500" style="width:0%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-6">
+        <!-- Tool 1: 開足弓 Timestamp-Accurate + WakeLock Timer -->
+        <div class="offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-5 shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-1">
               <h4 class="font-serif font-bold text-base">🦶 開足弓計時器（≤ 2:00）</h4>
               <span id="footModeLabel" class="text-xs font-bold px-2.5 py-0.5 rounded-md bg-gold/15 text-gold dark:text-gold-bright">準備就緒</span>
             </div>
             <p class="text-xs text-[#57524A] dark:text-[#C4BCAE]">
-              酸麻脹緊請即按「走動放鬆」，走動時間同樣計入每日 60 分鐘總時長！
+              內建時間戳記校準與防休眠保護；酸麻脹緊即按「走動放鬆」，同樣計入 60 分鐘總時長！
             </p>
 
             <div id="footTimerDisplay" class="font-serif text-4xl font-bold text-gold dark:text-gold-bright text-center my-4 tracking-widest">
@@ -725,7 +873,7 @@
 
           <div>
             <div class="flex justify-between text-xs mb-1.5">
-              <span>今日累計（含走動放鬆）：</span>
+              <span>當日累計（含走動放鬆）：</span>
               <strong id="footTotalText">0 / 60 分鐘</strong>
             </div>
             <div class="w-full h-3 bg-paper-subtle dark:bg-obsidian-subtle rounded-full overflow-hidden">
@@ -739,36 +887,57 @@
           </div>
         </div>
 
-        <!-- Tool 2: 三田落地 & 進陽火 10 Sets Tracker -->
-        <div class="bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+        <!-- Tool 2: 三田落地 & 進陽火 Hands-Free 10-Rep Pacer + 10 Sets Tracker -->
+        <div class="offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-5 shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-1">
               <h4 class="font-serif font-bold text-base">⚡ 三田落地 / 進陽火</h4>
               <strong id="setsCountText" class="text-sm text-jade dark:text-jade-bright">0 / 100 次</strong>
             </div>
-            <p class="text-xs text-[#57524A] dark:text-[#C4BCAE] mb-3">
-              每組 10 次，建議分早（1–3）、中（4–7）、晚（8–10）完成，勿集中刷次數：
-            </p>
 
-            <div id="setsGrid" class="grid grid-cols-5 gap-2 my-3"></div>
+            <!-- Hands-free 10-Rep Metronome Pacer Box -->
+            <div class="my-2.5 p-3 rounded-xl bg-paper-subtle/80 dark:bg-obsidian-subtle/80 border border-paper-border dark:border-obsidian-border">
+              <div class="flex flex-wrap items-center justify-between gap-1.5 mb-2">
+                <span class="text-xs font-bold text-gold dark:text-gold-bright">🔔 免提 10 次磬聲導引（去腦意免數數）</span>
+                <select id="pacerIntervalSelect" class="text-xs px-2 py-0.5 rounded-lg bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border">
+                  <option value="6">6 秒 / 次</option>
+                  <option value="8" selected>8 秒 / 次</option>
+                  <option value="10">10 秒 / 次</option>
+                </select>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 mb-2 text-xs">
+                <select id="pacerModeSelect" class="flex-1 px-2 py-1 rounded-lg bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border">
+                  <option value="drop">首週模式：純三田自由落體 (單磬)</option>
+                  <option value="both">滿週模式：1 落退陰符 + 1 合勁起 (雙磬)</option>
+                </select>
+              </div>
+              <div class="flex items-center justify-between gap-2">
+                <span id="pacerStatusText" class="text-xs font-semibold text-[#57524A] dark:text-[#C4BCAE]">按開始即響磬引導 10 次並自動打卡一組</span>
+                <button id="pacerStartBtn" onclick="toggleRepPacer()" class="shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold bg-jade text-white shadow hover:opacity-95 transition">
+                  ▶ 導引 1 組
+                </button>
+              </div>
+            </div>
+
+            <div id="setsGrid" class="grid grid-cols-5 gap-1.5 my-2.5"></div>
           </div>
 
           <div>
-            <div class="w-full h-3 bg-paper-subtle dark:bg-obsidian-subtle rounded-full overflow-hidden mb-2">
+            <div class="w-full h-3 bg-paper-subtle dark:bg-obsidian-subtle rounded-full overflow-hidden mb-1.5">
               <div id="setsProgressFill" class="h-full bg-gradient-to-r from-gold to-jade rounded-full transition-all duration-300" style="width:0%;"></div>
             </div>
-            <p class="text-xs text-[#8A8275]">
-              💡 首週只練「自由落體」；滿一週後「1 落 + 1 足底合勁起」算 1 次。
+            <p class="text-[11px] text-[#8A8275]">
+              建議分早（1–3）、中（4–7）、晚（8–10）完成，可點擊單組手動打勾。
             </p>
           </div>
         </div>
 
         <!-- Tool 3: 息法、心感排空與體察筆記 -->
-        <div class="bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+        <div class="offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-5 shadow-sm flex flex-col justify-between">
           <div>
             <h4 class="font-serif font-bold text-base mb-1">🫀 日常養息與心感紀錄</h4>
             <p class="text-xs text-[#57524A] dark:text-[#C4BCAE] mb-3">
-              勾選今日已融入日常的無形功課，並記錄身體與空間感變化：
+              勾選當日已融入日常的無形功課，並記錄身體與空間感變化：
             </p>
             <div class="space-y-2 mb-3">
               <label class="flex items-start gap-2.5 p-2.5 rounded-xl border border-paper-border dark:border-obsidian-border cursor-pointer hover:border-gold transition text-xs">
@@ -785,122 +954,237 @@
               </label>
             </div>
           </div>
-          <textarea id="dailyNote" rows="2" oninput="saveHabitChecks()" placeholder="記錄今日重心、呼吸或心感變化（自動儲存）..." class="w-full p-3 rounded-xl border border-paper-border dark:border-obsidian-border bg-paper-subtle/50 dark:bg-obsidian-subtle/50 text-xs focus:outline-none focus:ring-2 focus:ring-gold resize-y"></textarea>
+          <textarea id="dailyNote" rows="3" oninput="saveHabitChecks()" placeholder="記錄當日重心、呼吸或心感變化（自動儲存，並可隨 Word/PDF 匯出）..." class="w-full p-3 rounded-xl border border-paper-border dark:border-obsidian-border bg-paper-subtle/50 dark:bg-obsidian-subtle/50 text-xs focus:outline-none focus:ring-2 focus:ring-gold resize-y"></textarea>
+        </div>
+      </div>
+
+      <!-- History Calendar Strip & Past Notes Drawer -->
+      <div class="offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-5 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <div>
+            <h4 class="font-serif font-bold text-base">📆 過去 14 日修習日曆與體察日誌</h4>
+            <p class="text-xs text-[#8A8275]">點擊任何日期即可翻查或補記當日功課與體察筆記</p>
+          </div>
+          <button onclick="switchActiveDate(todayStr)" class="px-3 py-1 rounded-full text-xs font-semibold bg-gold/15 text-gold dark:text-gold-bright hover:bg-gold hover:text-white transition">
+            返回今日
+          </button>
+        </div>
+        <div id="calendarStrip" class="grid grid-cols-7 sm:grid-cols-14 gap-1.5 mb-3"></div>
+        <div id="recentNotesPreview" class="text-xs text-[#57524A] dark:text-[#C4BCAE] space-y-1.5 pt-2 border-t border-paper-border dark:border-obsidian-border"></div>
+      </div>
+    </section>
+
+    <!-- Section 4.5: Local Audio Companion Player (100% Offline Audio + Chapter Timestamps) -->
+    <section id="audio-companion" class="no-print scroll-mt-20">
+      <div class="border-b-2 border-paper-border dark:border-obsidian-border pb-3 mb-5">
+        <span class="text-xs uppercase tracking-widest text-cinnabar dark:text-cinnabar-bright font-bold block mb-1">Audio Companion · 離線原音伴讀</span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold">師父原聲講解同步播放器（免上傳、純本機播放）</h2>
+      </div>
+
+      <div class="offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-5 sm:p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+          <div class="flex items-center gap-3">
+            <label class="px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#C8963E] to-[#9E6F21] text-white shadow hover:opacity-95 transition cursor-pointer shrink-0">
+              🎵 載入原音檔 (.m4a / .mp3)
+              <input type="file" accept="audio/*,.m4a,.mp3,.wav,.aac" class="hidden" onchange="loadLocalAudioFile(event)" />
+            </label>
+            <div>
+              <div id="audioFileName" class="text-sm font-semibold">尚未載入音訊檔</div>
+              <div class="text-xs text-[#8A8275]">揀選你電腦或手機內嘅《古仙煉形築基——內煉篇_音訊.m4a》即可按章節跳轉伴讀</div>
+            </div>
+          </div>
+
+          <!-- Speed & Skip Controls -->
+          <div class="flex flex-wrap items-center gap-1.5">
+            <button onclick="skipAudio(-15)" class="px-2.5 py-1 rounded-lg text-xs font-semibold border border-paper-border dark:border-obsidian-border hover:border-gold transition">⏪ -15s</button>
+            <button onclick="skipAudio(15)" class="px-2.5 py-1 rounded-lg text-xs font-semibold border border-paper-border dark:border-obsidian-border hover:border-gold transition">+15s ⏩</button>
+            <select onchange="setAudioSpeed(this.value)" class="px-2.5 py-1 rounded-lg text-xs font-semibold border border-paper-border dark:border-obsidian-border bg-paper-subtle dark:bg-obsidian-subtle">
+              <option value="0.85">0.85x 慢聽</option>
+              <option value="1" selected>1.0x 原速</option>
+              <option value="1.25">1.25x 倍速</option>
+              <option value="1.5">1.5x 快溫</option>
+            </select>
+          </div>
+        </div>
+
+        <audio id="localAudioPlayer" controls class="w-full mb-4 rounded-xl"></audio>
+
+        <!-- Chapter Timestamp Quick-Jump Chips -->
+        <div>
+          <div class="text-xs font-bold text-[#8A8275] mb-2">⏱️ 章節時間軸一鍵跳轉（載入原音檔後點擊即跳至對應講解段落）：</div>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="seekAudioTo(0, '一、為什麼要築基')" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-paper-subtle dark:bg-obsidian-subtle hover:bg-gold hover:text-white transition">00:00 築基本義：恢復而非疊加</button>
+            <button onclick="seekAudioTo(115, '二、身體代償機制')" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-paper-subtle dark:bg-obsidian-subtle hover:bg-gold hover:text-white transition">01:55 身體代償與整體失調</button>
+            <button onclick="seekAudioTo(275, '三、減法哲學與三維空間')" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-paper-subtle dark:bg-obsidian-subtle hover:bg-gold hover:text-white transition">04:35 減法哲學與三維空間感</button>
+            <button onclick="seekAudioTo(455, '第一步：息法')" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-paper-subtle dark:bg-obsidian-subtle hover:bg-gold hover:text-white transition">07:35 ① 息法（橐籥呼吸）</button>
+            <button onclick="seekAudioTo(572, '第二步：開足弓')" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-paper-subtle dark:bg-obsidian-subtle hover:bg-gold hover:text-white transition">09:32 ② 開足弓（前掌承重）</button>
+            <button onclick="seekAudioTo(672, '第三步：三田落地')" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-paper-subtle dark:bg-obsidian-subtle hover:bg-gold hover:text-white transition">11:12 ③ 三田落地退陰符</button>
+            <button onclick="seekAudioTo(758, '第四步：心感排空')" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-paper-subtle dark:bg-obsidian-subtle hover:bg-gold hover:text-white transition">12:38 ④ 心感排空</button>
+            <button onclick="seekAudioTo(865, '第五步：恢復力線進陽火')" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-paper-subtle dark:bg-obsidian-subtle hover:bg-gold hover:text-white transition">14:25 ⑤ 恢復力線進陽火</button>
+            <button onclick="seekAudioTo(988, '第六步：心感萬物')" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-paper-subtle dark:bg-obsidian-subtle hover:bg-gold hover:text-white transition">16:28 ⑥ 心感萬物</button>
+            <button onclick="seekAudioTo(1085, '結語：七大真實效驗')" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-paper-subtle dark:bg-obsidian-subtle hover:bg-gold hover:text-white transition">18:05 不比功境與七大效驗</button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 5: Verification Standards -->
-    <section id="verification" class="scroll-mt-24">
-      <div class="border-b-2 border-paper-border dark:border-obsidian-border pb-3 mb-5">
-        <span class="text-xs uppercase tracking-widest text-cinnabar dark:text-cinnabar-bright font-bold block mb-1">Verification · 不比功境，只驗真實變化</span>
-        <h2 class="font-serif text-2xl sm:text-3xl font-bold">煉形築基七大真實效驗指標</h2>
+    <!-- Section 5: Verification Standards (Persistent in LocalStorage!) -->
+    <section id="verification" class="scroll-mt-20">
+      <div class="flex flex-wrap items-end justify-between gap-3 border-b-2 border-paper-border dark:border-obsidian-border pb-3 mb-5">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-cinnabar dark:text-cinnabar-bright font-bold block mb-1">Verification · 不比功境，只驗真實變化</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold">煉形築基七大真實效驗指標（自動長期記憶）</h2>
+        </div>
+        <span id="verifyProgressBadge" class="text-xs font-bold px-3 py-1 rounded-full bg-jade/15 text-jade dark:text-jade-bright">已達成 0 / 7 項</span>
       </div>
 
       <p class="text-sm text-[#57524A] dark:text-[#C4BCAE] mb-5 leading-relaxed">
-        每人過去幾十年累積的勞損與心傷不同，有人先熱、有人先麻、有人毫無特殊功境但體態先變。切忌見異思遷追逐胎息、採氣或神通，只需核對以下七項真實生活指標（可點擊勾選自我檢視）：
+        每人過去幾十年累積的勞損與心傷不同，有人先熱、有人先麻、有人毫無特殊功境但體態先變。切忌見異思遷追逐胎息、採氣或神通，只需核對以下七項真實生活指標（勾選狀態會自動永久保存）：
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
-        <label class="print-avoid-break flex items-start gap-3 p-4 bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl cursor-pointer hover:border-gold transition text-sm">
-          <input type="checkbox" onchange="toggleVerifyStyle(this)" class="mt-1 w-4 h-4 accent-jade shrink-0" />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5" id="verifyChecklistGrid">
+        <label class="verify-label print-avoid-break flex items-start gap-3 p-4 offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl cursor-pointer hover:border-gold transition text-sm">
+          <input type="checkbox" data-vidx="0" onchange="saveVerificationState()" class="mt-1 w-4 h-4 accent-jade shrink-0" />
           <span><strong>1. 身體更輕鬆：</strong>日常活動不再莫名腰酸背痛、頸椎僵硬或動不動崴腳。</span>
         </label>
-        <label class="print-avoid-break flex items-start gap-3 p-4 bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl cursor-pointer hover:border-gold transition text-sm">
-          <input type="checkbox" onchange="toggleVerifyStyle(this)" class="mt-1 w-4 h-4 accent-jade shrink-0" />
+        <label class="verify-label print-avoid-break flex items-start gap-3 p-4 offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl cursor-pointer hover:border-gold transition text-sm">
+          <input type="checkbox" data-vidx="1" onchange="saveVerificationState()" class="mt-1 w-4 h-4 accent-jade shrink-0" />
           <span><strong>2. 呼吸更自然：</strong>不再侷限於胸口淺喘，呼吸自然深長貼近脊柱。</span>
         </label>
-        <label class="print-avoid-break flex items-start gap-3 p-4 bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl cursor-pointer hover:border-gold transition text-sm">
-          <input type="checkbox" onchange="toggleVerifyStyle(this)" class="mt-1 w-4 h-4 accent-jade shrink-0" />
+        <label class="verify-label print-avoid-break flex items-start gap-3 p-4 offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl cursor-pointer hover:border-gold transition text-sm">
+          <input type="checkbox" data-vidx="2" onchange="saveVerificationState()" class="mt-1 w-4 h-4 accent-jade shrink-0" />
           <span><strong>3. 足底真承重：</strong>前腳掌重新參與承重，雙腳站立如生根般穩固。</span>
         </label>
-        <label class="print-avoid-break flex items-start gap-3 p-4 bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl cursor-pointer hover:border-gold transition text-sm">
-          <input type="checkbox" onchange="toggleVerifyStyle(this)" class="mt-1 w-4 h-4 accent-jade shrink-0" />
+        <label class="verify-label print-avoid-break flex items-start gap-3 p-4 offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl cursor-pointer hover:border-gold transition text-sm">
+          <input type="checkbox" data-vidx="3" onchange="saveVerificationState()" class="mt-1 w-4 h-4 accent-jade shrink-0" />
           <span><strong>4. 膝蓋不亂頂：</strong>彎腰起身與走路時，力量從足底傳導，不再靠膝蓋硬頂。</span>
         </label>
-        <label class="print-avoid-break flex items-start gap-3 p-4 bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl cursor-pointer hover:border-gold transition text-sm">
-          <input type="checkbox" onchange="toggleVerifyStyle(this)" class="mt-1 w-4 h-4 accent-jade shrink-0" />
+        <label class="verify-label print-avoid-break flex items-start gap-3 p-4 offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl cursor-pointer hover:border-gold transition text-sm">
+          <input type="checkbox" data-vidx="4" onchange="saveVerificationState()" class="mt-1 w-4 h-4 accent-jade shrink-0" />
           <span><strong>5. 腰胯漸鬆活：</strong>骨盆與腰胯卸除長期代償緊繃，上下半身空間貫通。</span>
         </label>
-        <label class="print-avoid-break flex items-start gap-3 p-4 bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl cursor-pointer hover:border-gold transition text-sm">
-          <input type="checkbox" onchange="toggleVerifyStyle(this)" class="mt-1 w-4 h-4 accent-jade shrink-0" />
+        <label class="verify-label print-avoid-break flex items-start gap-3 p-4 offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl cursor-pointer hover:border-gold transition text-sm">
+          <input type="checkbox" data-vidx="5" onchange="saveVerificationState()" class="mt-1 w-4 h-4 accent-jade shrink-0" />
           <span><strong>6. 胸中堵空減：</strong>莫名的壓迫感、空虛感、心慌與舊情緒積壓顯著減輕。</span>
         </label>
-        <label class="print-avoid-break flex items-start gap-3 p-4 bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl cursor-pointer hover:border-gold transition text-sm md:col-span-2 lg:col-span-3">
-          <input type="checkbox" onchange="toggleVerifyStyle(this)" class="mt-1 w-4 h-4 accent-jade shrink-0" />
+        <label class="verify-label print-avoid-break flex items-start gap-3 p-4 offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl cursor-pointer hover:border-gold transition text-sm md:col-span-2 lg:col-span-3">
+          <input type="checkbox" data-vidx="6" onchange="saveVerificationState()" class="mt-1 w-4 h-4 accent-jade shrink-0" />
           <span><strong>7. 空間更立體：</strong>那層與世界格格不入的「隔膜感」消失，視覺聽覺與空間層次真實鮮活，生命真正處在這個世界裡。</span>
         </label>
       </div>
     </section>
 
-    <!-- Section 6: Full Searchable Verbatim Transcript -->
-    <section id="transcript" class="scroll-mt-24">
-      <div class="border-b-2 border-paper-border dark:border-obsidian-border pb-3 mb-5">
-        <span class="text-xs uppercase tracking-widest text-cinnabar dark:text-cinnabar-bright font-bold block mb-1">Full Verbatim Transcript · 原音完整轉錄</span>
-        <h2 class="font-serif text-2xl sm:text-3xl font-bold">開篇寄語及功法修習順序講解（繁體逐字稿）</h2>
+    <!-- Section 6: Upgraded Full Searchable Verbatim Transcript (Font Resize, Collapse, Match Jump) -->
+    <section id="transcript" class="scroll-mt-20">
+      <div class="flex flex-wrap items-end justify-between gap-3 border-b-2 border-paper-border dark:border-obsidian-border pb-3 mb-5">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-cinnabar dark:text-cinnabar-bright font-bold block mb-1">Full Verbatim Transcript · 原音完整轉錄</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold">開篇寄語及功法修習順序講解（繁體逐字稿）</h2>
+        </div>
+
+        <!-- Reader Typography & Collapse Controls -->
+        <div class="no-print flex flex-wrap items-center gap-1.5">
+          <button onclick="setTranscriptSize('sm')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card hover:border-gold">A-</button>
+          <button onclick="setTranscriptSize('md')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card hover:border-gold">標準</button>
+          <button onclick="setTranscriptSize('lg')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card hover:border-gold">A+</button>
+          <button onclick="toggleAllChapters()" id="toggleChaptersBtn" class="px-3 py-1 rounded-lg text-xs font-semibold border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card hover:border-gold">
+            ↕ 收合全部章節
+          </button>
+        </div>
       </div>
 
-      <div class="no-print flex flex-wrap gap-3 mb-5">
-        <input type="text" id="transcriptSearch" oninput="highlightTranscript(this.value)" placeholder="🔍 搜尋逐字稿關鍵字（例如：代償、橐籥、中軸、三維、合勁）..." class="flex-1 min-w-[220px] px-4 py-2.5 rounded-full border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card text-sm focus:outline-none focus:ring-2 focus:ring-gold" />
-        <button onclick="document.getElementById('transcriptSearch').value='';highlightTranscript('');" class="px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card hover:border-gold transition">
-          清除搜尋
+      <!-- Upgraded Search Bar with Match Counter & Prev/Next Navigation -->
+      <div class="no-print flex flex-wrap items-center gap-2 mb-5">
+        <input type="text" id="transcriptSearch" oninput="highlightTranscript(this.value)" placeholder="🔍 搜尋逐字稿關鍵字（例如：代償、橐籥、中軸、三維、合勁）..." class="flex-1 min-w-[200px] px-4 py-2.5 rounded-full border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card text-sm focus:outline-none focus:ring-2 focus:ring-gold" />
+        <div id="searchNavControls" class="hidden items-center gap-1.5">
+          <span id="searchMatchBadge" class="text-xs font-bold px-2.5 py-1.5 rounded-full bg-gold/15 text-gold dark:text-gold-bright">0 / 0</span>
+          <button onclick="stepSearchMatch(-1)" class="px-3 py-1.5 rounded-full text-xs font-semibold border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card hover:border-gold">⬆ 上一處</button>
+          <button onclick="stepSearchMatch(1)" class="px-3 py-1.5 rounded-full text-xs font-semibold border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card hover:border-gold">⬇ 下一處</button>
+        </div>
+        <button onclick="document.getElementById('transcriptSearch').value='';highlightTranscript('');" class="px-3.5 py-2 rounded-full text-xs font-semibold border border-paper-border dark:border-obsidian-border bg-paper-card dark:bg-obsidian-card hover:border-gold transition">
+          清除
         </button>
       </div>
 
-      <div id="transcriptContent" class="bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-6 sm:p-8 shadow-sm divide-y divide-paper-border dark:divide-obsidian-border space-y-6">
-        <div class="print-avoid-break pt-0">
-          <h4 class="font-serif text-lg font-bold text-gold dark:text-gold-bright mb-3">一、為什麼要築基：破除盲目疊加，從失常恢復正常</h4>
-          <p class="mb-3 text-justify leading-relaxed">大家好，歡迎參加煉形築基修行課程。在正式開始學習之前，我先和大家聊清楚一個最基礎的問題：我們為什麼要築基？很多人一聽到築基，第一反應就是打坐、煉氣、周天、丹田，甚至覺得築基是不是在給後面煉丹、胎息、神通做準備。如果你也是這麼理解，其實並不奇怪。因為現在市面上絕大多數修行課程，往往一上來就開始教你怎麼呼吸、怎麼守丹田、怎麼搬運氣血、怎麼觀想、怎麼靜坐。</p>
-          <p class="mb-3 text-justify leading-relaxed">但我這些年真正實修下來以後，越來越覺得，很多人一開始的問題根本不是不會練功，而是連最基礎的身體和心都已經不是一個完整、自然、協調的狀態。一個人如果連自己的身體結構都沒有恢復，重心都是歪的、膈膜都是塌的、呼吸是淺的、力線是亂的、心感是堵的、空間感也是破碎的；這個時候你再去講周天、講氣血、講胎息，很多時候其實都是建立在異常結構之上繼續疊加。</p>
-          <p class="text-justify leading-relaxed">所以從我的體系來說，煉形築基最開始要做的事不是「增加」什麼，而是「恢復」——恢復原本屬於你的身體，恢復原本屬於你的呼吸，恢復原本屬於你的空間，恢復原本屬於你的感應，恢復原本屬於你的心。</p>
+      <div id="transcriptContent" class="ts-size-md offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl p-5 sm:p-8 shadow-sm divide-y divide-paper-border dark:divide-obsidian-border space-y-5">
+        <div class="transcript-section print-avoid-break pt-0">
+          <h4 onclick="toggleSingleChapter(this)" class="cursor-pointer flex items-center justify-between font-serif text-lg font-bold text-gold dark:text-gold-bright mb-3 select-none">
+            <span>一、為什麼要築基：破除盲目疊加，從失常恢復正常</span>
+            <span class="no-print text-xs text-[#8A8275] chapter-arrow">▼</span>
+          </h4>
+          <div class="transcript-body">
+            <p class="mb-3 text-justify">大家好，歡迎參加煉形築基修行課程。在正式開始學習之前，我先和大家聊清楚一個最基礎的問題：我們為什麼要築基？很多人一聽到築基，第一反應就是打坐、煉氣、周天、丹田，甚至覺得築基是不是在給後面煉丹、胎息、神通做準備。如果你也是這麼理解，其實並不奇怪。因為現在市面上絕大多數修行課程，往往一上來就開始教你怎麼呼吸、怎麼守丹田、怎麼搬運氣血、怎麼觀想、怎麼靜坐。</p>
+            <p class="mb-3 text-justify">但我這些年真正實修下來以後，越來越覺得，很多人一開始的問題根本不是不會練功，而是連最基礎的身體和心都已經不是一個完整、自然、協調的狀態。一個人如果連自己的身體結構都沒有恢復，重心都是歪的、膈膜都是塌的、呼吸是淺的、力線是亂的、心感是堵的、空間感也是破碎的；這個時候你再去講周天、講氣血、講胎息，很多時候其實都是建立在異常結構之上繼續疊加。</p>
+            <p class="text-justify">所以從我的體系來說，煉形築基最開始要做的事不是「增加」什麼，而是「恢復」——恢復原本屬於你的身體，恢復原本屬於你的呼吸，恢復原本屬於你的空間，恢復原本屬於你的感應，恢復原本屬於你的心。</p>
+          </div>
         </div>
 
-        <div class="print-avoid-break pt-6">
-          <h4 class="font-serif text-lg font-bold text-gold dark:text-gold-bright mb-3">二、身體代償機制與整體失調的根源</h4>
-          <p class="mb-3 text-justify leading-relaxed">很多人可能會覺得：「我的身體好好的，有什麼需要恢復？」你每天能走路、能吃飯、能工作、能睡覺，當然不代表你有病；但能正常生活，也不代表身體結構就是完整的。你可以現在感受一下自己：你站著的時候，全身重量到底落在哪裡？是在前腳掌、後腳跟，還是腳底中心？你走路的時候，力量是從哪裡起？腳底、膝蓋，還是腰？你彎腰的時候，是從足底把你撐起來，還是大腿一繃、膝蓋一頂、腰再猛地拉一下？</p>
-          <p class="mb-3 text-justify leading-relaxed">很多人根本不知道，因為這種錯誤的發力方式已經跟了你十年、二十年、三十年，你早就把它當成正常了。但身體並不會因為你習慣了，它就變成正確的。普通人日常運動，大多數時候都是局部肌肉發力——哪裡需要用力，哪裡就繃；哪裡不夠，其他地方就來幫。肩膀不夠，脖子幫；腰不夠，膝蓋幫；膝蓋不夠，腳踝幫——這就是「代償」。</p>
-          <p class="mb-3 text-justify leading-relaxed">代償本身不是壞東西，它是身體為了讓你繼續完成動作而建立的一種保護機制。但問題在於，如果這種代償一天發生幾十次、幾百次，持續十幾年以後，原本臨時救急的東西就會變成一種固定結構：肌肉越來越僵，筋膜越來越緊，骨骼間架逐漸偏移，身體內部原本應該存在的空間開始塌縮。最後你會發現，明明沒幹什麼苦力，卻總是腰酸背痛；明明沒有受傷，卻動不動崴腳；膝蓋越來越不舒服，骨盆越來越歪，頸椎越來越僵。有些人還會覺得胸口堵、呼吸淺、睡眠不好、情緒容易緊張，甚至總有一種說不清楚的壓迫感和不安感。</p>
-          <p class="mb-3 text-justify leading-relaxed">這些東西很多時候並不是彼此孤立的，因為人本來就是一個整體——骨骼、筋膜、肌肉、神經、氣血、呼吸、心理、感知，從來不是各管各的，它們彼此之間一直相互影響。所以，煉形築基修行課程的核心，不是教大家學會六個動作，而是通過六個功法，從骨骼間架、筋膜、氣血、呼吸、心理，以及內外空間幾個層面，一點一點把這個已經被長期生活習慣打亂的整體重新恢復起來。</p>
-          <p class="text-justify leading-relaxed">我希望大家真正學完以後，得到的不是一句「我會站樁了」，也不是「我有氣感了」，而是你開始真正認識自己的身體：你知道自己重心在哪裡，知道哪裡在代償，知道哪裡在用錯力，知道哪裡沒有空間，知道自己的呼吸為什麼淺，知道心裡那種莫名其妙的堵、空、慌、恐懼到底是什麼；然後再一步一步把這些東西恢復回來，這才叫築基。</p>
+        <div class="transcript-section print-avoid-break pt-5">
+          <h4 onclick="toggleSingleChapter(this)" class="cursor-pointer flex items-center justify-between font-serif text-lg font-bold text-gold dark:text-gold-bright mb-3 select-none">
+            <span>二、身體代償機制與整體失調的根源</span>
+            <span class="no-print text-xs text-[#8A8275] chapter-arrow">▼</span>
+          </h4>
+          <div class="transcript-body">
+            <p class="mb-3 text-justify">很多人可能會覺得：「我的身體好好的，有什麼需要恢復？」你每天能走路、能吃飯、能工作、能睡覺，當然不代表你有病；但能正常生活，也不代表身體結構就是完整的。你可以現在感受一下自己：你站著的時候，全身重量到底落在哪裡？是在前腳掌、後腳跟，還是腳底中心？你走路的時候，力量是從哪裡起？腳底、膝蓋，還是腰？你彎腰的時候，是從足底把你撐起來，還是大腿一繃、膝蓋一頂、腰再猛地拉一下？</p>
+            <p class="mb-3 text-justify">很多人根本不知道，因為這種錯誤的發力方式已經跟了你十年、二十年、三十年，你早就把它當成正常了。但身體並不會因為你習慣了，它就變成正確的。普通人日常運動，大多數時候都是局部肌肉發力——哪裡需要用力，哪裡就繃；哪裡不夠，其他地方就來幫。肩膀不夠，脖子幫；腰不夠，膝蓋幫；膝蓋不夠，腳踝幫——這就是「代償」。</p>
+            <p class="mb-3 text-justify">代償本身不是壞東西，它是身體為了讓你繼續完成動作而建立的一種保護機制。但問題在於，如果這種代償一天發生幾十次、幾百次，持續十幾年以後，原本臨時救急的東西就會變成一種固定結構：肌肉越來越僵，筋膜越來越緊，骨骼間架逐漸偏移，身體內部原本應該存在的空間開始塌縮。最後你會發現，明明沒幹什麼苦力，卻總是腰酸背痛；明明沒有受傷，卻動不動崴腳；膝蓋越來越不舒服，骨盆越來越歪，頸椎越來越僵。有些人還會覺得胸口堵、呼吸淺、睡眠不好、情緒容易緊張，甚至總有一種說不清楚的壓迫感和不安感。</p>
+            <p class="mb-3 text-justify">這些東西很多時候並不是彼此孤立的，因為人本來就是一個整體——骨骼、筋膜、肌肉、神經、氣血、呼吸、心理、感知，從來不是各管各的，它們彼此之間一直相互影響。所以，煉形築基修行課程的核心，不是教大家學會六個動作，而是通過六個功法，從骨骼間架、筋膜、氣血、呼吸、心理，以及內外空間幾個層面，一點一點把這個已經被長期生活習慣打亂的整體重新恢復起來。</p>
+            <p class="text-justify">我希望大家真正學完以後，得到的不是一句「我會站樁了」，也不是「我有氣感了」，而是你開始真正認識自己的身體：你知道自己重心在哪裡，知道哪裡在代償，知道哪裡在用錯力，知道哪裡沒有空間，知道自己的呼吸為什麼淺，知道心裡那種莫名其妙的堵、空、慌、恐懼到底是什麼；然後再一步一步把這些東西恢復回來，這才叫築基。</p>
+          </div>
         </div>
 
-        <div class="print-avoid-break pt-6">
-          <h4 class="font-serif text-lg font-bold text-gold dark:text-gold-bright mb-3">三、初期修行的「減法」哲學與恢復三維立體空間感</h4>
-          <p class="mb-3 text-justify leading-relaxed">很多人覺得修行是一種不斷「增加」的過程：煉氣、煉神、開竅、入靜、胎息，然後一個境界接一個境界。但在我看來，至少最開始不是這樣。最初期的修行，其實更像是在不斷「拿掉」——拿掉錯誤的發力，拿掉長期形成的代償，拿掉筋膜的黏連和塌縮，拿掉那些留在心裡幾十年的堵塞，拿掉腦意對一切感知的過度主導。當這些東西一點一點被拿掉以後，你會發現很多所謂新的能力其實並不是練出來的，而是原本就有，只是過去被遮住了。</p>
-          <p class="mb-3 text-justify leading-relaxed">比如呼吸：很多人小時候本就自然地整體呼吸，後來長大以後，久坐、緊張、焦慮、姿勢異常，呼吸越來越淺，最後只剩下胸腔一小塊在動。所以「橐籥呼吸」不是在創造一種新的呼吸，而是在恢復。比如力線：正常情況下，人體本來就應該整體傳導，只是後天錯誤發力方式太多，逐漸變成局部肌肉僵硬。所以恢復力線也不是發明一種新力量，還是在恢復。再比如心感：小孩其實非常會感受，喜歡就是喜歡，不喜歡就是不喜歡，害怕就是害怕，開心就是開心。但隨著成長，我們越來越習慣用腦去解釋一切——難過了告訴自己不能難過，害怕了告訴自己想開一點，明明不願意卻不斷說服自己應該這樣。久而久之，事情可能被邏輯腦解釋過去了，但感覺並沒有真正消失，它是被壓下來了。所以「心感排空」不是創造一個新的東西，而是在恢復那個本來就存在的心。這也是為什麼我一直強調，煉形築基不是從無到有，而是從失常重新回到正常。只有正常真正恢復以後，才有資格談後面的變化。</p>
-          <p class="mb-3 text-justify leading-relaxed">而這套課程最終還有一個非常重要的目標，就是恢復三維立體空間感。很多人第一次聽到這句話可能不理解：「我現在每天睜著眼睛看到的世界不就是三維的嗎？」當然，從視覺上你知道世界是三維的，但「知道三維」和「真實地感受到自己處在一個三維空間裡面」，其實是兩回事。很多現代人的感知長期被腦意主導以後，會越來越像一種「切片狀態」：眼睛看到一個人，腦子立刻識別「這是某某」；看到一個桌子，腦子立刻判斷「這是桌子」；聽到聲音，腦子立刻分析「聲音從哪裡來」。我們習慣了用一個又一個的信息標籤去拼湊世界，但真正體會的空間感反而越來越弱。甚至有些人會有一種非常明顯的感覺：世界像隔著一層東西，明明自己就在這裡，卻總感覺沒有真正地進入現實；看東西像平面，聽聲音像孤立的信息，人與空間之間沒有整體連接感。</p>
-          <p class="text-justify leading-relaxed">而煉形築基階段，就是要一點一點恢復這種感覺：先恢復身內空間，再恢復身外空間，最後內外相合，讓自己真正重新感受到——我不是一個只裝著大腦的肉身，我本身是一個完整存在於三維空間裡的生命。這也是為什麼這套課程不是只有身體功法，也不是只有心法；因為只有形沒有心，空間依然不是完整的；只有心沒有形，同樣容易飄。所以這六個功法本身就是一個完整閉環。</p>
+        <div class="transcript-section print-avoid-break pt-5">
+          <h4 onclick="toggleSingleChapter(this)" class="cursor-pointer flex items-center justify-between font-serif text-lg font-bold text-gold dark:text-gold-bright mb-3 select-none">
+            <span>三、初期修行的「減法」哲學與恢復三維立體空間感</span>
+            <span class="no-print text-xs text-[#8A8275] chapter-arrow">▼</span>
+          </h4>
+          <div class="transcript-body">
+            <p class="mb-3 text-justify">很多人覺得修行是一種不斷「增加」的過程：煉氣、煉神、開竅、入靜、胎息，然後一個境界接一個境界。但在我看來，至少最開始不是這樣。最初期的修行，其實更像是在不斷「拿掉」——拿掉錯誤的發力，拿掉長期形成的代償，拿掉筋膜的黏連和塌縮，拿掉那些留在心裡幾十年的堵塞，拿掉腦意對一切感知的過度主導。當這些東西一點一點被拿掉以後，你會發現很多所謂新的能力其實並不是練出來的，而是原本就有，只是過去被遮住了。</p>
+            <p class="mb-3 text-justify">比如呼吸：很多人小時候本就自然地整體呼吸，後來長大以後，久坐、緊張、焦慮、姿勢異常，呼吸越來越淺，最後只剩下胸腔一小塊在動。所以「橐籥呼吸」不是在創造一種新的呼吸，而是在恢復。比如力線：正常情況下，人體本來就應該整體傳導，只是後天錯誤發力方式太多，逐漸變成局部肌肉僵硬。所以恢復力線也不是發明一種新力量，還是在恢復。再比如心感：小孩其實非常會感受，喜歡就是喜歡，不喜歡就是不喜歡，害怕就是害怕，開心就是開心。但隨著成長，我們越來越習慣用腦去解釋一切——難過了告訴自己不能難過，害怕了告訴自己想開一點，明明不願意卻不斷說服自己應該這樣。久而久之，事情可能被邏輯腦解釋過去了，但感覺並沒有真正消失，它是被壓下來了。所以「心感排空」不是創造一個新的東西，而是在恢復那個本來就存在的心。這也是為什麼我一直強調，煉形築基不是從無到有，而是從失常重新回到正常。只有正常真正恢復以後，才有資格談後面的變化。</p>
+            <p class="mb-3 text-justify">而這套課程最終還有一個非常重要的目標，就是恢復三維立體空間感。很多人第一次聽到這句話可能不理解：「我現在每天睜著眼睛看到的世界不就是三維的嗎？」當然，從視覺上你知道世界是三維的，但「知道三維」和「真實地感受到自己處在一個三維空間裡面」，其實是兩回事。很多現代人的感知長期被腦意主導以後，會越來越像一種「切片狀態」：眼睛看到一個人，腦子立刻識別「這是某某」；看到一個桌子，腦子立刻判斷「這是桌子」；聽到聲音，腦子立刻分析「聲音從哪裡來」。我們習慣了用一個又一個的信息標籤去拼湊世界，但真正體會的空間感反而越來越弱。甚至有些人會有一種非常明顯的感覺：世界像隔著一層東西，明明自己就在這裡，卻總感覺沒有真正地進入現實；看東西像平面，聽聲音像孤立的信息，人與空間之間沒有整體連接感。</p>
+            <p class="text-justify">而煉形築基階段，就是要一點一點恢復這種感覺：先恢復身內空間，再恢復身外空間，最後內外相合，讓自己真正重新感受到——我不是一個只裝著大腦的肉身，我本身是一個完整存在於三維空間裡的生命。這也是為什麼這套課程不是只有身體功法，也不是只有心法；因為只有形沒有心，空間依然不是完整的；只有心沒有形，同樣容易飄。所以這六個功法本身就是一個完整閉環。</p>
+          </div>
         </div>
 
-        <div class="pt-6">
-          <h4 class="font-serif text-lg font-bold text-gold dark:text-gold-bright mb-3">四、六大功法具體修煉次第詳解</h4>
-          <p class="mb-3 text-justify leading-relaxed"><strong>第一步是「息法」。</strong>息法是六法裡最先開始，也是最後會完全融入日常的一法。很多人一聽到呼吸法，就喜歡給自己規定每天練二十分鐘、每天練半小時、每天練一百次。其實我不這麼要求，因為真正的息法最終不是一套動作，而是你的日常呼吸狀態。我們前面一直講，普通人對深呼吸有一個很大的誤解，很多人覺得吸到肚子就是深、吸到下丹田就是深，越往下越高級。其實「深」和「長」根本不是一個概念——向下是長，向內才是深。真正的深，是進入人體內部更深層的膜結構，是逐漸貼近脊柱，是讓上、中、下三田之間形成完整的聯動。所以息法最開始練的是「橐籥呼吸」，不是胸腹來回起伏，更不是硬憋、不是加壓，更不是故意把氣往下壓。真正的橐籥是借助完整膜結構的傳導特性，讓呼吸形成鼓盪，逐漸進入上、中、下三田。最開始先建立上田，當上田逐漸鬆開以後，很多人會感覺呼吸變得比以前更順暢，腦子也開始更清晰；再與中丹田相合以後，胸腔逐漸鬆活；再往後，呼吸自然變深、變長，下丹田才逐漸加入進來。所以這法不追求快，更不要拼命吸；如果練到頭暈、胸悶、憋得難受，那基本已經不是養息，而是在硬做。息法最初的要求就是：想起來就練，走路可以練、坐著可以練、躺著可以練、工作間隙也可以練，最終做到不用提醒，身體自己進入三田聯動狀態，這個時候你才算真正掌握。</p>
-          <p class="mb-3 text-justify leading-relaxed"><strong>第二步是「開足弓」（開足筋）。</strong>為什麼要練腳？因為腳下都沒有中心，後面所有中軸、力線、入地生根都只是空談。絕大多數現代人站立的時候，重心其實明顯偏後，主要壓在腳跟，前腳掌只是接觸地面，卻沒有真正參與承重。那為什麼你還能站住？因為身體前面一定有部位持續發力把你拉回來，這種力你可能已經感覺不到了，但它一直存在。所以開足弓第一件事情，就是讓前腳掌重新參與承重。練習的時候雙腳與肩同寬，自然下蹲，把整體重心向前腳掌移動。注意：不是用腳趾抓地，也不是足底發力，只是讓前腳掌承重。初練時容易失去平衡，可以扶固定物。單次時間最多兩分鐘，出現酸、麻、脹、緊以後站起來，大步走動放鬆，不要硬扛。因為這裡不是練腿力，如果你為了多站五分鐘把腿練得越來越僵，那就完全走反了。練的是感應，練的是足底結構，練的是重新找到中心。每天累計習練總時長不低於一小時，但注意，這一小時一定包含中間走動和放鬆，不是連續站一小時。</p>
-          <p class="mb-3 text-justify leading-relaxed"><strong>第三步是「三田落地退陰符」。</strong>息法先恢復腰胯以上的內部空間，但腰胯以下，尤其是腿部和足底的空間，很多人依然是缺失的，所以這一步就是讓三田真正向下落。最開始先讓下丹田落向足底中心點，再讓中、下丹田合在一條垂線上一起落，最後上、中、下三田合在一條垂線上整體自由下墜。這裡最重要的是「自由落體」，不是你向下壓，也不是你故意蹲，而是把原本維持著身體多餘的力量釋放掉以後，讓整個結構自然下落。隨著不斷習練，三田空間感會逐漸通過腰胯、大腿、膝、小腿，一直貫穿到足底。等整個下半身空間真正恢復以後，身體逐漸會出現一條柱狀空間感，這就是築基階段最初的人體中軸。所以中軸不是觀想出來的，不是你想像脊柱裡面有一根柱子，而是當上下空間真正連接起來以後，它自己出現的。這一法每組十次，每天十組，盡量分早、中、晚完成，不要集中練完，因為我們是逐漸調整結構，不是在刷次數。</p>
-          <p class="mb-3 text-justify leading-relaxed"><strong>第四步是「心感排空」。</strong>這一法和前面三法不一樣。前面更多的是恢復形體和氣機，心感排空恢復的是身內感應。很多人一說情緒，就習慣了用腦分析：我為什麼焦慮？因為工作；為什麼難過？因為感情；為什麼害怕？因為小時候發生了什麼。分析沒有錯，但分析永遠不等於感受。有些事情你早就想明白了，甚至十年前就想明白了，可是你一碰到類似的情景，身體還是緊、胸口還是堵、心還是慌。這說明什麼？說明腦邏輯已經過去了，感覺沒有過去。所以心感排空最開始不是讓你分析原因，只是讓你感受：手放在胸口，感覺裡面是什麼——堵、空、喜、怒、憂、思、驚、恐、悲，感覺到什麼就處理什麼。所謂「排」，也不是把神氣往外射，而是把阻礙這份感覺自然流動的東西解開。怎麼判斷練對沒有？不是看有沒有氣感，也不是有沒有特殊體驗，只看感覺有沒有變化：堵感變輕了、空感消失了、恐懼減弱了，那就是有效。前期不熟悉，需要每天抽一些零散的時間練；等真正熟悉以後就不需要規定時長了，日常什麼時候感受到，什麼時候就可以排，最終把它變成一種常態能力。</p>
-          <p class="mb-3 text-justify leading-relaxed"><strong>前面這四法，是課程開始以後就要同時進行的。</strong>也就是說，息法、開足弓、三田落地退陰符、心感排空，從第一天就開始練。為什麼要同練？因為它本來就在解決同一個整體的不同部分：息法解決內部深層膜結構與三田聯動；開足弓解決足底承重與中心點；三田落地解決上下貫穿和中軸；心感排空解決身內堵塞與空間恢復。四個基礎逐漸建立以後，人的整體才真正開始恢復。</p>
-          <p class="mb-3 text-justify leading-relaxed"><strong>練習一週以後，再加入第五個功法：「恢復力線進陽火」。</strong>為什麼不是第一天就練？因為恢復力線首先需要腳下有中心，也需要三田落地有初步基礎。如果連足底中心點都沒有找到，整個人還在靠膝蓋、大腿、腰胯硬撐，這個時候直接練「起」，很容易把原來的錯誤力線練得更牢。所以先給自己一週，先把腳練出來，先把「落」練出來，然後再練「起」。這一法的核心就是：先三田落地，再緩慢調整重心，當身體移動到臨界點時，前腳掌會自然產生抓地，此時前腳掌和足跟會形成一種相合的力量，然後借助這個合勁把整個人撐起。注意：不是膝蓋硬頂起來，不是大腿抬起來，不是腰拉起來，而是足底先起，力量逐漸向上傳導。真正需要觀察的不是你能不能站起來（誰都能站起來），而是你這次站起來，力到底從哪裡來。如果還是膝蓋發力，就重新來；如果還是腰胯先動，就重新找。一次下落加一次起身算一次，練習次數和「三田落地退陰符」同步——也就是一個練落、一個練起，一個退、一個進，一個退陰符、一個進陽火。當足底筋膜逐漸鬆開、騰起，整體傳導恢復以後，有些人會出現明顯熱感，或者身體後側向上運行的感覺。但不要看到頭脹、口腔潰瘍、長痘，卻偏偏告訴自己這是功力增加；任何明顯不適都要先降低練習次數。如果有基礎疾病、血壓異常或者本身身體狀態比較複雜，也不要硬練。修行不是比誰能扛，真正正確的練習一定是越來越順。</p>
-          <p class="text-justify leading-relaxed"><strong>最後，第六個功法是「心感萬物」。</strong>這一法一定放在心感排空之後。為什麼？因為身內都堵著，心還處在自我包裹狀態，你對外的感應很容易失真。所以先排空，讓身內空間逐漸恢復，再讓心感慢慢向外延伸。最開始只感一個物體，不管它是什麼，不要分析顏色，不要判斷形狀，不要識別功能——這些東西都交給腦；心只負責一個最簡單的事情：感受它的存在。一個、兩個、三個，慢慢擴展。最後不是要讓你學會閉眼在房間裡找東西，而是重新建立人與萬物之間的連接。隨著這種感應恢復以後，你會逐漸發現整個空間開始變化：原來世界像一張平面圖，現在開始有前後、有遠近、有層次；你不是隔著自己在看這個世界，而是越來越真實地處在這個空間裡面。</p>
+        <div class="transcript-section pt-5">
+          <h4 onclick="toggleSingleChapter(this)" class="cursor-pointer flex items-center justify-between font-serif text-lg font-bold text-gold dark:text-gold-bright mb-3 select-none">
+            <span>四、六大功法具體修煉次第詳解</span>
+            <span class="no-print text-xs text-[#8A8275] chapter-arrow">▼</span>
+          </h4>
+          <div class="transcript-body">
+            <p class="mb-3 text-justify"><strong>第一步是「息法」。</strong>息法是六法裡最先開始，也是最後會完全融入日常的一法。很多人一聽到呼吸法，就喜歡給自己規定每天練二十分鐘、每天練半小時、每天練一百次。其實我不這麼要求，因為真正的息法最終不是一套動作，而是你的日常呼吸狀態。我們前面一直講，普通人對深呼吸有一個很大的誤解，很多人覺得吸到肚子就是深、吸到下丹田就是深，越往下越高級。其實「深」和「長」根本不是一個概念——向下是長，向內才是深。真正的深，是進入人體內部更深層的膜結構，是逐漸貼近脊柱，是讓上、中、下三田之間形成完整的聯動。所以息法最開始練的是「橐籥呼吸」，不是胸腹來回起伏，更不是硬憋、不是加壓，更不是故意把氣往下壓。真正的橐籥是借助完整膜結構的傳導特性，讓呼吸形成鼓盪，逐漸進入上、中、下三田。最開始先建立上田，當上田逐漸鬆開以後，很多人會感覺呼吸變得比以前更順暢，腦子也開始更清晰；再與中丹田相合以後，胸腔逐漸鬆活；再往後，呼吸自然變深、變長，下丹田才逐漸加入進來。所以這法不追求快，更不要拼命吸；如果練到頭暈、胸悶、憋得難受，那基本已經不是養息，而是在硬做。息法最初的要求就是：想起來就練，走路可以練、坐著可以練、躺著可以練、工作間隙也可以練，最終做到不用提醒，身體自己進入三田聯動狀態，這個時候你才算真正掌握。</p>
+            <p class="mb-3 text-justify"><strong>第二步是「開足弓」（開足筋）。</strong>為什麼要練腳？因為腳下都沒有中心，後面所有中軸、力線、入地生根都只是空談。絕大多數現代人站立的時候，重心其實明顯偏後，主要壓在腳跟，前腳掌只是接觸地面，卻沒有真正參與承重。那為什麼你還能站住？因為身體前面一定有部位持續發力把你拉回來，這種力你可能已經感覺不到了，但它一直存在。所以開足弓第一件事情，就是讓前腳掌重新參與承重。練習的時候雙腳與肩同寬，自然下蹲，把整體重心向前腳掌移動。注意：不是用腳趾抓地，也不是足底發力，只是讓前腳掌承重。初練時容易失去平衡，可以扶固定物。單次時間最多兩分鐘，出現酸、麻、脹、緊以後站起來，大步走動放鬆，不要硬扛。因為這裡不是練腿力，如果你為了多站五分鐘把腿練得越來越僵，那就完全走反了。練的是感應，練的是足底結構，練的是重新找到中心。每天累計習練總時長不低於一小時，但注意，這一小時一定包含中間走動和放鬆，不是連續站一小時。</p>
+            <p class="mb-3 text-justify"><strong>第三步是「三田落地退陰符」。</strong>息法先恢復腰胯以上的內部空間，但腰胯以下，尤其是腿部和足底的空間，很多人依然是缺失的，所以這一步就是讓三田真正向下落。最開始先讓下丹田落向足底中心點，再讓中、下丹田合在一條垂線上一起落，最後上、中、下三田合在一條垂線上整體自由下墜。這裡最重要的是「自由落體」，不是你向下壓，也不是你故意蹲，而是把原本維持著身體多餘的力量釋放掉以後，讓整個結構自然下落。隨著不斷習練，三田空間感會逐漸通過腰胯、大腿、膝、小腿，一直貫穿到足底。等整個下半身空間真正恢復以後，身體逐漸會出現一條柱狀空間感，這就是築基階段最初的人體中軸。所以中軸不是觀想出來的，不是你想像脊柱裡面有一根柱子，而是當上下空間真正連接起來以後，它自己出現的。這一法每組十次，每天十組，盡量分早、中、晚完成，不要集中練完，因為我們是逐漸調整結構，不是在刷次數。</p>
+            <p class="mb-3 text-justify"><strong>第四步是「心感排空」。</strong>這一法和前面三法不一樣。前面更多的是恢復形體和氣機，心感排空恢復的是身內感應。很多人一說情緒，就習慣了用腦分析：我為什麼焦慮？因為工作；為什麼難過？因為感情；為什麼害怕？因為小時候發生了什麼。分析沒有錯，但分析永遠不等於感受。有些事情你早就想明白了，甚至十年前就想明白了，可是你一碰到類似的情景，身體還是緊、胸口還是堵、心還是慌。這說明什麼？說明腦邏輯已經過去了，感覺沒有過去。所以心感排空最開始不是讓你分析原因，只是讓你感受：手放在胸口，感覺裡面是什麼——堵、空、喜、怒、憂、思、驚、恐、悲，感覺到什麼就處理什麼。所謂「排」，也不是把神氣往外射，而是把阻礙這份感覺自然流動的東西解開。怎麼判斷練對沒有？不是看有沒有氣感，也不是有沒有特殊體驗，只看感覺有沒有變化：堵感變輕了、空感消失了、恐懼減弱了，那就是有效。前期不熟悉，需要每天抽一些零散的時間練；等真正熟悉以後就不需要規定時長了，日常什麼時候感受到，什麼時候就可以排，最終把它變成一種常態能力。</p>
+            <p class="mb-3 text-justify"><strong>前面這四法，是課程開始以後就要同時進行的。</strong>也就是說，息法、開足弓、三田落地退陰符、心感排空，從第一天就開始練。為什麼要同練？因為它本來就在解決同一個整體的不同部分：息法解決內部深層膜結構與三田聯動；開足弓解決足底承重與中心點；三田落地解決上下貫穿和中軸；心感排空解決身內堵塞與空間恢復。四個基礎逐漸建立以後，人的整體才真正開始恢復。</p>
+            <p class="mb-3 text-justify"><strong>練習一週以後，再加入第五個功法：「恢復力線進陽火」。</strong>為什麼不是第一天就練？因為恢復力線首先需要腳下有中心，也需要三田落地有初步基礎。如果連足底中心點都沒有找到，整個人還在靠膝蓋、大腿、腰胯硬撐，這個時候直接練「起」，很容易把原來的錯誤力線練得更牢。所以先給自己一週，先把腳練出來，先把「落」練出來，然後再練「起」。這一法的核心就是：先三田落地，再緩慢調整重心，當身體移動到臨界點時，前腳掌會自然產生抓地，此時前腳掌和足跟會形成一種相合的力量，然後借助這個合勁把整個人撐起。注意：不是膝蓋硬頂起來，不是大腿抬起來，不是腰拉起來，而是足底先起，力量逐漸向上傳導。真正需要觀察的不是你能不能站起來（誰都能站起來），而是你這次站起來，力到底從哪裡來。如果還是膝蓋發力，就重新來；如果還是腰胯先動，就重新找。一次下落加一次起身算一次，練習次數和「三田落地退陰符」同步——也就是一個練落、一個練起，一個退、一個進，一個退陰符、一個進陽火。當足底筋膜逐漸鬆開、騰起，整體傳導恢復以後，有些人會出現明顯熱感，或者身體後側向上運行的感覺。但不要看到頭脹、口腔潰瘍、長痘，卻偏偏告訴自己這是功力增加；任何明顯不適都要先降低練習次數。如果有基礎疾病、血壓異常或者本身身體狀態比較複雜，也不要硬練。修行不是比誰能扛，真正正確的練習一定是越來越順。</p>
+            <p class="text-justify"><strong>最後，第六個功法是「心感萬物」。</strong>這一法一定放在心感排空之後。為什麼？因為身內都堵著，心還處在自我包裹狀態，你對外的感應很容易失真。所以先排空，讓身內空間逐漸恢復，再讓心感慢慢向外延伸。最開始只感一個物體，不管它是什麼，不要分析顏色，不要判斷形狀，不要識別功能——這些東西都交給腦；心只負責一個最簡單的事情：感受它的存在。一個、兩個、三個，慢慢擴展。最後不是要讓你學會閉眼在房間裡找東西，而是重新建立人與萬物之間的連接。隨著這種感應恢復以後，你會逐漸發現整個空間開始變化：原來世界像一張平面圖，現在開始有前後、有遠近、有層次；你不是隔著自己在看這個世界，而是越來越真實地處在這個空間裡面。</p>
+          </div>
         </div>
 
-        <div class="print-avoid-break pt-6">
-          <h4 class="font-serif text-lg font-bold text-gold dark:text-gold-bright mb-3">五、結語：不比功境，回到真實世界，站在修行的起點</h4>
-          <p class="mb-3 text-justify leading-relaxed">所以，心感排空恢復的是身內空間，心感萬物恢復的是身外空間，三田落地恢復上下結構，息法恢復深層鼓盪，力線恢復身體運動軌跡。六個功法最終不是六套彼此獨立的東西，而是在完成一件事情：把一個長期被拆散的人重新合起來——把身體合起來，把氣機合起來，把心合起來，把內外空間合起來。等到這些東西逐漸完整以後，人的聽覺、視覺、感覺、身體結構都會開始進入一種更加立體的狀態。到了這裡，你才會真正理解我前面講的，為什麼煉形築基最終是在恢復三維立體空間感；因為當一個人真正恢復以後，他不再只是一個大腦帶著一副身體地活著，而是整個生命同時處在一個世界裡面。這也是我希望大家通過這門課最終能夠得到的東西。</p>
-          <p class="mb-3 text-justify leading-relaxed">當然，我還想提醒大家一點：不要和別人比功境，這一點非常重要。同一個功法，有些人今天練了明天就有感覺，有些人練了一週以後才有；有人先熱，有人先麻，有人先鬆，有人甚至什麼明顯感覺都沒有，但體態先開始發生變化——都很正常，因為你過去幾十年形成的問題本來就不一樣。有的人腳下問題重，有的人胸腔問題重，有的人腰胯問題重，有的人心傷問題重，恢復順序當然不會完全一樣。真正的修行從來不是複製別人的經驗，而是驗證自己有沒有發生真實變化。</p>
-          <p class="mb-3 text-justify leading-relaxed">你只需要看幾個東西：身體是不是比以前更輕鬆了？呼吸是不是比以前更自然了？足底是不是開始真正承重、站立是不是更穩了？膝蓋是不是不再亂頂了？腰胯是不是越來越輕鬆？心裡的堵和空是不是在減少？你對空間的感覺是不是越來越立體？如果這些東西都在變化，就說明功法是在真正起作用。反過來，如果練了很久，只剩下一堆越來越誇張的功境，但身體越來越僵、心越來越亂、情緒越來越大、現實生活越來越差，那就應該重新檢查自己到底在練什麼。</p>
-          <p class="mb-3 text-justify leading-relaxed">修行從來不是為了讓你離現實越來越遠。恰恰相反，至少在煉形築基這個階段，我們做的一切都是為了讓你真正回到現實——重新進入身體，重新進入空間，重新進入生活，重新和這個世界建立關係。過去很多人覺得自己總和這個世界格格不入，總覺得生活隔著一層，總覺得別人都活得很真實，自己卻像旁觀者。當內外空間慢慢恢復以後，你會逐漸發現那層隔膜開始消失，你開始真正感覺到：我就在這裡，身體在這裡，心在這裡，世界也在這裡；不是腦告訴你世界存在，而是你真正感受到自己的生命處在這個世界裡。從我的體系來說，這就是煉形築基階段非常重要的一次恢復，也是後面所有更高層次修行真正能夠成立的基礎。</p>
-          <p class="mb-3 text-justify leading-relaxed">所以我希望大家學習這套課程的時候，不要急，也不要亂，按照次第、按照方法，該練身體的時候練身體，該恢復心感的時候恢復心感，該養息的時候養息。不要今天看別人講胎息，馬上就去練胎息；明天看別人講採氣，又跑去採氣；後天看有人講神通，又覺得自己的課程太基礎。築基就是築基，基礎真正打好了，後面的東西自然會來；基礎沒有打好，懂得再多也只是概念。</p>
-          <p class="text-justify leading-relaxed">最後我希望大家在接下來的學習中，真正記住一句話：煉形築基不是把自己練成另外一個人，而是把真正的自己重新恢復出來——把錯位的骨骼間架調回來，把塌縮的筋膜騰起來，把錯誤的力線重新接通，把淺短的呼吸重新養深，把堵住的心重新打開，把破碎的內外空間重新合起來。當身體、心、氣機和空間開始重新合為一個整體的時候，你才算真正站在了修行的起點上，而不是終點。希望大家通過煉形築基修行課程，一步一步把自己的基礎真正築起來；也希望課程結束以後，你得到的不只是六個功法，而是一副更加完整的身體、一顆更加通透的心、一個更加清晰的感知系統，以及一個真正重新進入這個世界的自己。從現在開始，我們正式進入煉形築基修行課程。</p>
+        <div class="transcript-section print-avoid-break pt-5">
+          <h4 onclick="toggleSingleChapter(this)" class="cursor-pointer flex items-center justify-between font-serif text-lg font-bold text-gold dark:text-gold-bright mb-3 select-none">
+            <span>五、結語：不比功境，回到真實世界，站在修行的起點</span>
+            <span class="no-print text-xs text-[#8A8275] chapter-arrow">▼</span>
+          </h4>
+          <div class="transcript-body">
+            <p class="mb-3 text-justify">所以，心感排空恢復的是身內空間，心感萬物恢復的是身外空間，三田落地恢復上下結構，息法恢復深層鼓盪，力線恢復身體運動軌跡。六個功法最終不是六套彼此獨立的東西，而是在完成一件事情：把一個長期被拆散的人重新合起來——把身體合起來，把氣機合起來，把心合起來，把內外空間合起來。等到這些東西逐漸完整以後，人的聽覺、視覺、感覺、身體結構都會開始進入一種更加立體的狀態。到了這裡，你才會真正理解我前面講的，為什麼煉形築基最終是在恢復三維立體空間感；因為當一個人真正恢復以後，他不再只是一個大腦帶著一副身體地活著，而是整個生命同時處在一個世界裡面。這也是我希望大家通過這門課最終能夠得到的東西。</p>
+            <p class="mb-3 text-justify">當然，我還想提醒大家一點：不要和別人比功境，這一點非常重要。同一個功法，有些人今天練了明天就有感覺，有些人練了一週以後才有；有人先熱，有人先麻，有人先鬆，有人甚至什麼明顯感覺都沒有，但體態先開始發生變化——都很正常，因為你過去幾十年形成的問題本來就不一樣。有的人腳下問題重，有的人胸腔問題重，有的人腰胯問題重，有的人心傷問題重，恢復順序當然不會完全一樣。真正的修行從來不是複製別人的經驗，而是驗證自己有沒有發生真實變化。</p>
+            <p class="mb-3 text-justify">你只需要看幾個東西：身體是不是比以前更輕鬆了？呼吸是不是比以前更自然了？足底是不是開始真正承重、站立是不是更穩了？膝蓋是不是不再亂頂了？腰胯是不是越來越輕鬆？心裡的堵和空是不是在減少？你對空間的感覺是不是越來越立體？如果這些東西都在變化，就說明功法是在真正起作用。反過來，如果練了很久，只剩下一堆越來越誇張的功境，但身體越來越僵、心越來越亂、情緒越來越大、現實生活越來越差，那就應該重新檢查自己到底在練什麼。</p>
+            <p class="mb-3 text-justify">修行從來不是為了讓你離現實越來越遠。恰恰相反，至少在煉形築基這個階段，我們做的一切都是為了讓你真正回到現實——重新進入身體，重新進入空間，重新進入生活，重新和這個世界建立關係。過去很多人覺得自己總和這個世界格格不入，總覺得生活隔著一層，總覺得別人都活得很真實，自己卻像旁觀者。當內外空間慢慢恢復以後，你會逐漸發現那層隔膜開始消失，你開始真正感覺到：我就在這裡，身體在這裡，心在這裡，世界也在這裡；不是腦告訴你世界存在，而是你真正感受到自己的生命處在這個世界裡。從我的體系來說，這就是煉形築基階段非常重要的一次恢復，也是後面所有更高層次修行真正能夠成立的基礎。</p>
+            <p class="mb-3 text-justify">所以我希望大家學習這套課程的時候，不要急，也不要亂，按照次第、按照方法，該練身體的時候練身體，該恢復心感的時候恢復心感，該養息的時候養息。不要今天看別人講胎息，馬上就去練胎息；明天看別人講採氣，又跑去採氣；後天看有人講神通，又覺得自己的課程太基礎。築基就是築基，基礎真正打好了，後面的東西自然會來；基礎沒有打好，懂得再多也只是概念。</p>
+            <p class="text-justify">最後我希望大家在接下來的學習中，真正記住一句話：煉形築基不是把自己練成另外一個人，而是把真正的自己重新恢復出來——把錯位的骨骼間架調回來，把塌縮的筋膜騰起來，把錯誤的力線重新接通，把淺短的呼吸重新養深，把堵住的心重新打開，把破碎的內外空間重新合起來。當身體、心、氣機和空間開始重新合為一個整體的時候，你才算真正站在了修行的起點上，而不是終點。希望大家通過煉形築基修行課程，一步一步把自己的基礎真正築起來；也希望課程結束以後，你得到的不只是六個功法，而是一副更加完整的身體、一顆更加通透的心、一個更加清晰的感知系統，以及一個真正重新進入這個世界的自己。從現在開始，我們正式進入煉形築基修行課程。</p>
+          </div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer with Official Course Portal Link -->
+  <!-- Footer -->
   <footer class="border-t border-paper-border dark:border-obsidian-border py-10 px-4 text-center text-xs sm:text-sm text-[#8A8275]">
     <p class="font-serif text-base text-gold dark:text-gold-bright font-semibold mb-2">
-      丹元居 ·《古仙煉形築基——內煉篇》實修手冊
+      丹元居 ·《古仙煉形築基——內煉篇》實修手冊 Pro
     </p>
     <p class="mb-2">
       官方課程與學員社群平台：
@@ -908,20 +1192,20 @@
         https://danyuanju.circle.so/
       </a>
     </p>
-    <p>修身 · 立命 · 守中黃 · 通大道 ｜ 支援離線瀏覽、PWA 主畫面安裝、A4 PDF 列印及 Word 文件匯出</p>
+    <p>修身 · 立命 · 守中黃 · 通大道 ｜ 支援防鎖屏計時、免提報數、跨日日曆、原音伴讀、PDF 列印及 Word 匯出</p>
   </footer>
 
   <!-- PWA Install Modal -->
   <div id="pwaModal" onclick="if(event.target===this)this.classList.add('hidden')" class="no-print hidden fixed inset-0 bg-black/60 z-[150] flex items-center justify-center p-4">
-    <div class="bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl max-w-md w-full p-6 shadow-2xl">
+    <div class="offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl max-w-md w-full p-6 shadow-2xl">
       <h3 class="font-serif text-lg font-bold mb-2">📲 安裝「煉形築基實修手冊」為獨立 App</h3>
       <p class="text-sm text-[#57524A] dark:text-[#C4BCAE] mb-4">
-        本單頁檔案已內建 PWA 圖示、Manifest、本機打卡儲存及丹元居學堂快捷入口：
+        本手冊已支援離線樣式保護、防休眠計時、跨日打卡備份與丹元居學堂直達入口：
       </p>
       <ul class="space-y-2 text-xs sm:text-sm text-[#57524A] dark:text-[#C4BCAE] mb-5">
-        <li>• <strong>iPhone / iPad (Safari)：</strong>點選底部<strong>「分享」</strong>圖示 → 選擇<strong>「加入主畫面」</strong>即可全螢幕離線使用。</li>
-        <li>• <strong>電腦 Chrome / Edge：</strong>點擊網址列右側安裝圖示，或按下方按鈕直接觸發安裝。</li>
-        <li>• <strong>返回原課程平台：</strong>隨時點擊頂部「🏯 進入學堂」即可開啟 <a href="https://danyuanju.circle.so/" target="_blank" rel="noopener noreferrer" class="text-gold underline">danyuanju.circle.so</a>。</li>
+        <li>• <strong>iPhone / iPad (Safari)：</strong>點選底部<strong>「分享」</strong>圖示 → 選擇<strong>「加入主畫面」</strong>即可全螢幕像原生 App 一樣操作。</li>
+        <li>• <strong>電腦 Chrome / Edge：</strong>點擊網址列右側安裝圖示，或按下方按鈕直接安裝。</li>
+        <li>• <strong>數據安全：</strong>建議定期在「練功房」點擊<strong>「💾 備份 JSON」</strong>保存你的修習日誌。</li>
       </ul>
       <div class="flex justify-end gap-2">
         <button id="installPromptTrigger" onclick="triggerNativeInstall()" class="hidden px-4 py-2 rounded-full text-xs font-semibold bg-gradient-to-r from-[#C8963E] to-[#9E6F21] text-white">立即安裝 App</button>
@@ -930,35 +1214,64 @@
     </div>
   </div>
 
-  <!-- Custom Reset Confirmation Modal (No browser confirm() used) -->
+  <!-- Custom Reset Confirmation Modal (Zero alert/confirm used) -->
   <div id="resetModal" onclick="if(event.target===this)this.classList.add('hidden')" class="no-print hidden fixed inset-0 bg-black/60 z-[150] flex items-center justify-center p-4">
-    <div class="bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl max-w-sm w-full p-6 shadow-2xl">
-      <h3 class="font-serif text-lg font-bold mb-2">重置今日實修紀錄？</h3>
+    <div class="offline-card bg-paper-card dark:bg-obsidian-card border border-paper-border dark:border-obsidian-border rounded-2xl max-w-sm w-full p-6 shadow-2xl">
+      <h3 class="font-serif text-lg font-bold mb-2">重置所選日期的實修紀錄？</h3>
       <p class="text-sm text-[#57524A] dark:text-[#C4BCAE] mb-5">
-        這將會清空今日的開足弓累計時長、三田落地組數及日常養息筆記。
+        這將會清空 <strong id="resetTargetDateLabel">今日</strong> 的開足弓累計時長、三田落地組數及體察筆記（其他日期不受影響）。
       </p>
       <div class="flex justify-end gap-2.5">
         <button onclick="document.getElementById('resetModal').classList.add('hidden')" class="px-4 py-2 rounded-full text-xs font-semibold border border-paper-border dark:border-obsidian-border">取消</button>
-        <button onclick="confirmResetTodayLog()" class="px-4 py-2 rounded-full text-xs font-semibold bg-cinnabar text-white hover:opacity-95">確定重置</button>
+        <button onclick="confirmResetActiveDayLog()" class="px-4 py-2 rounded-full text-xs font-semibold bg-cinnabar text-white hover:opacity-95">確定重置</button>
       </div>
     </div>
   </div>
 
   <script>
     // =========================================================================
-    // 0. Toast & Clipboard Helper (Iframe-safe document.execCommand('copy'))
+    // 0. Toast, Clipboard & Shared WebAudio Synthesizer
     // =========================================================================
     const PORTAL_URL = 'https://danyuanju.circle.so/';
     let toastTimeout = null;
+    let sharedAudioCtx = null;
+
+    function getAudioCtx() {
+      if (!sharedAudioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) sharedAudioCtx = new AudioContextClass();
+      }
+      if (sharedAudioCtx && sharedAudioCtx.state === 'suspended') {
+        sharedAudioCtx.resume();
+      }
+      return sharedAudioCtx;
+    }
+
+    function playChime(freq = 528, duration = 1.1, type = 'sine', vol = 0.25) {
+      try {
+        const ctx = getAudioCtx();
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(vol, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + duration);
+      } catch (e) {}
+    }
 
     function showToast(msg) {
       const toast = document.getElementById('toastNotification');
       document.getElementById('toastMessage').textContent = msg;
-      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.remove('translate-y-24', 'opacity-0');
       clearTimeout(toastTimeout);
       toastTimeout = setTimeout(() => {
-        toast.classList.add('translate-y-20', 'opacity-0');
-      }, 2600);
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 2800);
     }
 
     function copyPortalUrl() {
@@ -978,7 +1291,52 @@
     }
 
     // =========================================================================
-    // 1. PWA Manifest & Dynamic App Icon Setup
+    // 1. Screen Wake Lock API (Prevents Phone Screen Sleep During Practice)
+    // =========================================================================
+    let wakeLockSentinel = null;
+    let shouldKeepAwake = false;
+
+    async function requestScreenWakeLock() {
+      shouldKeepAwake = true;
+      const badge = document.getElementById('wakeLockBadge');
+      if ('wakeLock' in navigator) {
+        try {
+          if (!wakeLockSentinel) {
+            wakeLockSentinel = await navigator.wakeLock.request('screen');
+            wakeLockSentinel.addEventListener('release', () => {
+              wakeLockSentinel = null;
+            });
+          }
+          badge.textContent = '🔆 螢幕常亮保護中（防鎖屏）';
+          badge.className = 'text-xs px-2.5 py-1 rounded-full bg-jade/15 text-jade dark:text-jade-bright font-semibold';
+        } catch (err) {
+          badge.textContent = '⏱️ 時間戳記精準計時中';
+        }
+      } else {
+        badge.textContent = '⏱️ 時間戳記精準計時中';
+      }
+    }
+
+    async function releaseScreenWakeLockIfIdle() {
+      if (timerMode !== 'idle' || pacerRunning) return;
+      shouldKeepAwake = false;
+      if (wakeLockSentinel) {
+        try { await wakeLockSentinel.release(); } catch (e) {}
+        wakeLockSentinel = null;
+      }
+      const badge = document.getElementById('wakeLockBadge');
+      badge.textContent = '🌙 待命狀態（計時啟動自動防熄芒）';
+      badge.className = 'text-xs px-2.5 py-1 rounded-full bg-paper-subtle dark:bg-obsidian-subtle text-[#8A8275] font-medium';
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && shouldKeepAwake) {
+        requestScreenWakeLock();
+      }
+    });
+
+    // =========================================================================
+    // 2. PWA Manifest & Dynamic App Icon Setup
     // =========================================================================
     let deferredPrompt = null;
 
@@ -991,11 +1349,8 @@
 
         ctx.fillStyle = '#1C1917';
         ctx.beginPath();
-        if (ctx.roundRect) {
-          ctx.roundRect(0, 0, 512, 512, 96);
-        } else {
-          ctx.rect(0, 0, 512, 512);
-        }
+        if (ctx.roundRect) ctx.roundRect(0, 0, 512, 512, 96);
+        else ctx.rect(0, 0, 512, 512);
         ctx.fill();
 
         ctx.strokeStyle = '#DCA84E';
@@ -1031,32 +1386,18 @@
         const manifest = {
           name: '古仙煉形築基——內煉篇 | 丹元居',
           short_name: '煉形築基',
-          description: '丹元居《古仙煉形築基——內煉篇》實修手冊與每日打卡器 (https://danyuanju.circle.so/)',
+          description: '丹元居《古仙煉形築基——內煉篇》實修手冊 Pro (https://danyuanju.circle.so/)',
           start_url: './',
           display: 'standalone',
           background_color: '#FAF6EE',
           theme_color: '#1C1917',
-          icons: [
-            { src: iconDataUrl, sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
-          ]
+          icons: [{ src: iconDataUrl, sizes: '512x512', type: 'image/png', purpose: 'any maskable' }]
         };
         const manifestBlob = new Blob([JSON.stringify(manifest)], { type: 'application/manifest+json' });
         const manifestLink = document.createElement('link');
         manifestLink.rel = 'manifest';
         manifestLink.href = URL.createObjectURL(manifestBlob);
         document.head.appendChild(manifestLink);
-
-        if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-          const swCode = `
-            self.addEventListener('install', e => self.skipWaiting());
-            self.addEventListener('activate', e => e.waitUntil(clients.claim()));
-            self.addEventListener('fetch', e => {
-              e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
-            });
-          `;
-          const swBlob = new Blob([swCode], { type: 'application/javascript' });
-          navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(() => {});
-        }
       } catch (e) {}
     })();
 
@@ -1079,21 +1420,33 @@
     }
 
     // =========================================================================
-    // 2. Theme Switcher (Light Xuan-Paper / Dark Obsidian)
+    // 3. Theme Switcher & Tuoyue Visual Animation Toggle
     // =========================================================================
     function toggleTheme() {
       const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('danyuan_theme', isDark ? 'dark' : 'light');
+      try { localStorage.setItem('danyuan_theme', isDark ? 'dark' : 'light'); } catch (e) {}
       document.getElementById('themeBtn').textContent = isDark ? '☀️ 宣紙' : '🌙 玄夜';
     }
 
-    if (localStorage.getItem('danyuan_theme') === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.getElementById('themeBtn').textContent = '☀️ 宣紙';
+    try {
+      if (localStorage.getItem('danyuan_theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('themeBtn').textContent = '☀️ 宣紙';
+      }
+    } catch (e) {}
+
+    function toggleTuoyueAnim() {
+      const wrap = document.getElementById('bodyFigureWrapper');
+      const active = wrap.classList.toggle('tuoyue-active');
+      const btn = document.getElementById('tuoyueBtn');
+      btn.textContent = active ? '🌬️ 橐籥導引：開' : '🌬️ 橐籥導引：關';
+      btn.className = active
+        ? 'px-2.5 py-1 rounded-full text-[11px] font-semibold bg-jade/15 text-jade dark:text-jade-bright border border-jade/40 transition'
+        : 'px-2.5 py-1 rounded-full text-[11px] font-semibold bg-paper-subtle dark:bg-obsidian-subtle text-[#8A8275] border border-paper-border dark:border-obsidian-border transition';
     }
 
     // =========================================================================
-    // 3. Interactive Body Diagram & Six Methods Selector
+    // 4. Interactive Body Diagram & Six Methods Selector
     // =========================================================================
     const zoneCaptions = {
       1: '【第 1 法 · 息法】深層膜結構貼近脊柱鼓盪，由上田鬆開漸合中、下三田',
@@ -1132,37 +1485,83 @@
       });
     }
 
-    function toggleVerifyStyle(chk) {
-      chk.parentElement.classList.toggle('border-jade', chk.checked);
-      chk.parentElement.classList.toggle('bg-jade/10', chk.checked);
+    // =========================================================================
+    // 5. Persistent Multi-Day Practice Log, 7-Day Unlock & Backup/Restore
+    // =========================================================================
+    function getLocalDateStr(d = new Date()) {
+      const yr = d.getFullYear();
+      const mo = String(d.getMonth() + 1).padStart(2, '0');
+      const da = String(d.getDate()).padStart(2, '0');
+      return `${yr}-${mo}-${da}`;
     }
 
-    // =========================================================================
-    // 4. Daily Practice Tracker & Timers (LocalStorage)
-    // =========================================================================
-    const todayStr = new Date().toISOString().slice(0, 10);
-    const todayKey = 'danyuan_log_' + todayStr;
-    document.getElementById('todayDateBadge').textContent = '📅 今日：' + todayStr;
+    const todayStr = getLocalDateStr();
+    let activeDateStr = todayStr;
 
-    let dailyState = { footSec: 0, sets: Array(10).fill(false), breath: false, heartEmpty: false, heartWorld: false, note: '' };
-    try {
-      const saved = localStorage.getItem(todayKey);
-      if (saved) dailyState = JSON.parse(saved);
-    } catch (e) {}
+    function emptyDayRecord() {
+      return { footSec: 0, sets: Array(10).fill(false), breath: false, heartEmpty: false, heartWorld: false, note: '' };
+    }
+
+    function loadDayRecord(dateStr) {
+      try {
+        const raw = localStorage.getItem('danyuan_log_' + dateStr);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (!Array.isArray(parsed.sets) || parsed.sets.length !== 10) parsed.sets = Array(10).fill(false);
+          return parsed;
+        }
+      } catch (e) {}
+      return emptyDayRecord();
+    }
+
+    let dailyState = loadDayRecord(activeDateStr);
+
+    function isDayPracticed(rec) {
+      if (!rec) return false;
+      return rec.footSec >= 60 || (rec.sets && rec.sets.some(Boolean)) || rec.breath || rec.heartEmpty || rec.heartWorld || (rec.note && rec.note.trim().length > 0);
+    }
+
+    function getAllPracticedHistory() {
+      const list = [];
+      try {
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (k && k.startsWith('danyuan_log_')) {
+            const dateStr = k.replace('danyuan_log_', '');
+            const rec = loadDayRecord(dateStr);
+            if (isDayPracticed(rec)) list.push({ date: dateStr, rec });
+          }
+        }
+      } catch (e) {}
+      list.sort((a, b) => b.date.localeCompare(a.date));
+      return list;
+    }
 
     function saveState() {
       try {
-        localStorage.setItem(todayKey, JSON.stringify(dailyState));
+        localStorage.setItem('danyuan_log_' + activeDateStr, JSON.stringify(dailyState));
       } catch (e) {}
       renderTracker();
     }
 
+    function switchActiveDate(dateStr) {
+      activeDateStr = dateStr;
+      dailyState = loadDayRecord(activeDateStr);
+      renderTracker();
+    }
+
     function renderTracker() {
+      // Active Date Label
+      document.getElementById('activeDateLabel').textContent =
+        activeDateStr === todayStr ? `📅 當前：今日 (${activeDateStr.slice(5)})` : `📅 檢視歷史：${activeDateStr}`;
+
+      // Foot Arch Progress
       const mins = Math.floor(dailyState.footSec / 60);
       const pct = Math.min(100, Math.round((dailyState.footSec / 3600) * 100));
       document.getElementById('footTotalText').textContent = `${mins} / 60 分鐘 (${pct}%)`;
       document.getElementById('footProgressFill').style.width = pct + '%';
 
+      // 10 Sets Grid
       const setsGrid = document.getElementById('setsGrid');
       setsGrid.innerHTML = '';
       let doneCount = 0;
@@ -1171,8 +1570,8 @@
         const b = document.createElement('button');
         const period = idx < 3 ? '早' : (idx < 7 ? '中' : '晚');
         b.className = done
-          ? 'py-2 px-1 rounded-xl text-xs font-bold bg-jade text-white border border-jade transition'
-          : 'py-2 px-1 rounded-xl text-xs font-semibold bg-paper-subtle dark:bg-obsidian-subtle text-[#57524A] dark:text-[#C4BCAE] border border-paper-border dark:border-obsidian-border hover:border-gold transition';
+          ? 'py-1.5 px-1 rounded-xl text-xs font-bold bg-jade text-white border border-jade transition'
+          : 'py-1.5 px-1 rounded-xl text-xs font-semibold bg-paper-subtle dark:bg-obsidian-subtle text-[#57524A] dark:text-[#C4BCAE] border border-paper-border dark:border-obsidian-border hover:border-gold transition';
         b.textContent = `${done ? '✓' : ''}${idx + 1}組(${period})`;
         b.onclick = () => {
           dailyState.sets[idx] = !dailyState.sets[idx];
@@ -1183,12 +1582,77 @@
       document.getElementById('setsCountText').textContent = `${doneCount * 10} / 100 次`;
       document.getElementById('setsProgressFill').style.width = (doneCount * 10) + '%';
 
+      // Habits & Note
       document.getElementById('chkBreath').checked = !!dailyState.breath;
       document.getElementById('chkHeartEmpty').checked = !!dailyState.heartEmpty;
       document.getElementById('chkHeartWorld').checked = !!dailyState.heartWorld;
       if (document.activeElement !== document.getElementById('dailyNote')) {
         document.getElementById('dailyNote').value = dailyState.note || '';
       }
+
+      // 7-Day Unlock Progress Calculation
+      const history = getAllPracticedHistory();
+      const totalDays = history.length;
+      const unlockPct = Math.min(100, Math.round((totalDays / 7) * 100));
+      document.getElementById('sevenDayFill').style.width = unlockPct + '%';
+
+      if (totalDays >= 7) {
+        document.getElementById('unlockStatusIcon').textContent = '🔥';
+        document.getElementById('unlockStatusTitle').textContent = `已累計修習 ${totalDays} 天 · 第二階段「恢復力線進陽火」已解鎖！`;
+        document.getElementById('unlockStatusDesc').textContent = '你已完成首週基礎累積！若足底中心與三田落地順暢，可將節拍器切換至「滿週模式：1 落 + 1 合勁起」。';
+        document.getElementById('totalDaysCountText').textContent = `已滿週 (${totalDays} 天)`;
+      } else {
+        document.getElementById('unlockStatusIcon').textContent = '🌱';
+        document.getElementById('unlockStatusTitle').textContent = `首週築基進度：累計已修習 ${totalDays} / 7 天`;
+        document.getElementById('unlockStatusDesc').textContent = `再累積 ${7 - totalDays} 天前四法基礎（練腳、練自由落體），即可加入第 5 法「恢復力線進陽火」。`;
+        document.getElementById('totalDaysCountText').textContent = `${totalDays} / 7 天`;
+      }
+
+      // Render 14-Day Calendar Strip
+      const cal = document.getElementById('calendarStrip');
+      cal.innerHTML = '';
+      for (let offset = 13; offset >= 0; offset--) {
+        const d = new Date();
+        d.setDate(d.getDate() - offset);
+        const dStr = getLocalDateStr(d);
+        const rec = loadDayRecord(dStr);
+        const practiced = isDayPracticed(rec);
+        const isSelected = dStr === activeDateStr;
+
+        const cell = document.createElement('button');
+        cell.className = `p-1.5 rounded-xl text-center border transition flex flex-col items-center justify-center ${
+          isSelected
+            ? 'border-gold ring-2 ring-gold/40 bg-gold/15'
+            : practiced
+              ? 'border-jade/60 bg-jade/10 text-jade dark:text-jade-bright'
+              : 'border-paper-border dark:border-obsidian-border bg-paper-subtle/50 dark:bg-obsidian-subtle/50 text-[#8A8275]'
+        }`;
+        const dayNum = dStr.slice(8);
+        const monthNum = dStr.slice(5, 7);
+        cell.innerHTML = `
+          <span class="text-[10px] opacity-75">${dStr === todayStr ? '今日' : monthNum + '/' + dayNum}</span>
+          <span class="text-xs font-bold mt-0.5">${practiced ? '✓' : '·'}</span>
+        `;
+        cell.onclick = () => switchActiveDate(dStr);
+        cal.appendChild(cell);
+      }
+
+      // Render Recent Notes Preview (Top 4 with notes)
+      const notesBox = document.getElementById('recentNotesPreview');
+      const withNotes = history.filter(h => h.rec.note && h.rec.note.trim());
+      if (withNotes.length === 0) {
+        notesBox.innerHTML = '<span class="text-[#8A8275]">尚無歷史體察筆記。於上方輸入框記錄每日重心、呼吸或空間感變化，將自動彙整於此。</span>';
+      } else {
+        notesBox.innerHTML = withNotes.slice(0, 4).map(h => {
+          const sDone = h.rec.sets.filter(Boolean).length;
+          const fMin = Math.floor(h.rec.footSec / 60);
+          return `<div class="flex flex-wrap gap-2 items-baseline"><strong class="text-gold dark:text-gold-bright shrink-0">[${h.date}]</strong><span class="opacity-75 shrink-0">(足弓${fMin}m · 落地${sDone}組)</span><span>${escapeHTML(h.rec.note)}</span></div>`;
+        }).join('');
+      }
+    }
+
+    function escapeHTML(str) {
+      return String(str).replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
     }
 
     function saveHabitChecks() {
@@ -1199,67 +1663,83 @@
       saveState();
     }
 
-    // Foot Arch Timer (Stand 2-min countdown OR Walk count-up)
+    // =========================================================================
+    // 6. Timestamp-Delta Accurate Foot Arch Timer + Hands-Free 10-Rep Pacer
+    // =========================================================================
     let timerInterval = null;
-    let currentStandRemaining = 120;
-    let currentWalkElapsed = 0;
-
-    function playGentleBell() {
-      try {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(528, ctx.currentTime);
-        gain.gain.setValueAtTime(0.25, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.4);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start();
-        osc.stop(ctx.currentTime + 1.4);
-      } catch (e) {}
-    }
+    let timerMode = 'idle'; // 'idle' | 'stand' | 'walk'
+    let standEndTimestamp = 0;
+    let walkStartTimestamp = 0;
+    let lastRecordedTimestamp = 0;
 
     function fmtTime(sec) {
-      const m = String(Math.floor(sec / 60)).padStart(2, '0');
-      const s = String(sec % 60).padStart(2, '0');
+      const safe = Math.max(0, Math.floor(sec));
+      const m = String(Math.floor(safe / 60)).padStart(2, '0');
+      const s = String(safe % 60).padStart(2, '0');
       return `${m}:${s}`;
     }
 
     function startFootStand() {
       clearInterval(timerInterval);
-      currentStandRemaining = 120;
+      getAudioCtx();
+      requestScreenWakeLock();
+      timerMode = 'stand';
+      const now = Date.now();
+      standEndTimestamp = now + 120 * 1000;
+      lastRecordedTimestamp = now;
+
       document.getElementById('footModeLabel').textContent = '🦶 前掌承重倒數';
-      document.getElementById('footTimerDisplay').textContent = fmtTime(currentStandRemaining);
+      document.getElementById('footTimerDisplay').textContent = '02:00';
+
       timerInterval = setInterval(() => {
-        currentStandRemaining--;
-        dailyState.footSec++;
-        document.getElementById('footTimerDisplay').textContent = fmtTime(currentStandRemaining);
-        saveState();
-        if (currentStandRemaining <= 0) {
-          playGentleBell();
-          showToast('2 分鐘已到！已自動切換至大步走動放鬆計時');
+        const curr = Date.now();
+        const deltaSec = Math.floor((curr - lastRecordedTimestamp) / 1000);
+        if (deltaSec >= 1) {
+          dailyState.footSec += deltaSec;
+          lastRecordedTimestamp += deltaSec * 1000;
+          saveState();
+        }
+        const remSec = Math.ceil((standEndTimestamp - curr) / 1000);
+        document.getElementById('footTimerDisplay').textContent = fmtTime(remSec);
+
+        if (remSec <= 0) {
+          playChime(528, 1.4, 'sine', 0.3);
+          showToast('2 分鐘已到！請即站起大步走動放鬆（已自動切換計時）');
           startFootWalk();
         }
-      }, 1000);
+      }, 300);
     }
 
     function startFootWalk() {
       clearInterval(timerInterval);
-      currentWalkElapsed = 0;
+      getAudioCtx();
+      requestScreenWakeLock();
+      timerMode = 'walk';
+      const now = Date.now();
+      walkStartTimestamp = now;
+      lastRecordedTimestamp = now;
+
       document.getElementById('footModeLabel').textContent = '🚶 走動放鬆計時';
       document.getElementById('footTimerDisplay').textContent = '00:00';
+
       timerInterval = setInterval(() => {
-        currentWalkElapsed++;
-        dailyState.footSec++;
-        document.getElementById('footTimerDisplay').textContent = fmtTime(currentWalkElapsed);
-        saveState();
-      }, 1000);
+        const curr = Date.now();
+        const deltaSec = Math.floor((curr - lastRecordedTimestamp) / 1000);
+        if (deltaSec >= 1) {
+          dailyState.footSec += deltaSec;
+          lastRecordedTimestamp += deltaSec * 1000;
+          saveState();
+        }
+        const elapsed = Math.floor((curr - walkStartTimestamp) / 1000);
+        document.getElementById('footTimerDisplay').textContent = fmtTime(elapsed);
+      }, 300);
     }
 
     function pauseFootTimer() {
       clearInterval(timerInterval);
+      timerMode = 'idle';
       document.getElementById('footModeLabel').textContent = '已暫停';
+      releaseScreenWakeLockIfIdle();
     }
 
     function addManualFootMins(m) {
@@ -1268,37 +1748,290 @@
       showToast(`已補記 ${m} 分鐘開足弓時長`);
     }
 
+    // Hands-Free 10-Rep Guided Pacer ("三田落地 / 進陽火")
+    let pacerRunning = false;
+    let pacerTimers = [];
+
+    function clearPacerTimers() {
+      pacerTimers.forEach(t => clearTimeout(t));
+      pacerTimers = [];
+    }
+
+    function toggleRepPacer() {
+      if (pacerRunning) {
+        stopRepPacer('已停止本組磬聲導引');
+        return;
+      }
+      getAudioCtx();
+      requestScreenWakeLock();
+      pacerRunning = true;
+
+      const cycleSec = Number(document.getElementById('pacerIntervalSelect').value) || 8;
+      const mode = document.getElementById('pacerModeSelect').value; // 'drop' | 'both'
+      const btn = document.getElementById('pacerStartBtn');
+      const status = document.getElementById('pacerStatusText');
+
+      btn.textContent = '⏹ 停止導引';
+      btn.className = 'shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold bg-cinnabar text-white shadow hover:opacity-95 transition';
+
+      for (let rep = 1; rep <= 10; rep++) {
+        const startMs = (rep - 1) * cycleSec * 1000;
+
+        // Cue 1: Free-fall Drop (退陰符 - Warm Low Bowl 396Hz)
+        pacerTimers.push(setTimeout(() => {
+          playChime(396, 1.0, 'sine', 0.28);
+          status.textContent = mode === 'both'
+            ? `第 ${rep} / 10 次：⬇️ 三田自由下落（退陰符）...`
+            : `第 ${rep} / 10 次：⬇️ 釋放維持力 · 自由落體...`;
+        }, startMs));
+
+        // Cue 2: Forefoot-Heel Cohesive Rise (進陽火 - Clear Chime 528Hz halfway through cycle)
+        if (mode === 'both') {
+          pacerTimers.push(setTimeout(() => {
+            playChime(528, 0.9, 'triangle', 0.22);
+            status.textContent = `第 ${rep} / 10 次：⬆️ 前掌足跟合勁撐起（進陽火）...`;
+          }, startMs + (cycleSec * 500)));
+        }
+      }
+
+      // Completion after 10 reps
+      pacerTimers.push(setTimeout(() => {
+        playChime(639, 1.8, 'sine', 0.32);
+        const nextIdx = dailyState.sets.findIndex(s => !s);
+        if (nextIdx !== -1) {
+          dailyState.sets[nextIdx] = true;
+          saveState();
+          showToast(`已完成 10 次導引！自動為你打卡「第 ${nextIdx + 1} 組」`);
+        } else {
+          showToast('已完成 10 次導引！（今日 10 組已全數達成）');
+        }
+        stopRepPacer('✓ 本組 10 次圓滿完成！請稍作放鬆');
+      }, 10 * cycleSec * 1000));
+    }
+
+    function stopRepPacer(msg) {
+      clearPacerTimers();
+      pacerRunning = false;
+      const btn = document.getElementById('pacerStartBtn');
+      btn.textContent = '▶ 導引 1 組';
+      btn.className = 'shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold bg-jade text-white shadow hover:opacity-95 transition';
+      document.getElementById('pacerStatusText').textContent = msg || '按開始即響磬引導 10 次並自動打卡一組';
+      releaseScreenWakeLockIfIdle();
+    }
+
+    // Reset & JSON Backup / Restore
     function openResetModal() {
+      document.getElementById('resetTargetDateLabel').textContent = activeDateStr === todayStr ? `今日 (${activeDateStr})` : activeDateStr;
       document.getElementById('resetModal').classList.remove('hidden');
     }
 
-    function confirmResetTodayLog() {
+    function confirmResetActiveDayLog() {
       pauseFootTimer();
+      if (pacerRunning) stopRepPacer();
       document.getElementById('footTimerDisplay').textContent = '02:00';
-      dailyState = { footSec: 0, sets: Array(10).fill(false), breath: false, heartEmpty: false, heartWorld: false, note: '' };
+      dailyState = emptyDayRecord();
       saveState();
       document.getElementById('resetModal').classList.add('hidden');
-      showToast('已重置今日打卡紀錄');
+      showToast(`已重置 ${activeDateStr} 的打卡紀錄`);
     }
 
-    renderTracker();
+    function exportBackupJSON() {
+      const payload = { version: 2, exportedAt: new Date().toISOString(), verify: loadVerificationArray(), logs: {} };
+      try {
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (k && k.startsWith('danyuan_log_')) {
+            payload.logs[k] = JSON.parse(localStorage.getItem(k));
+          }
+        }
+      } catch (e) {}
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `丹元居_煉形築基打卡備份_${todayStr}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('已匯出 JSON 修習備份檔');
+    }
+
+    function importBackupJSON(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const data = JSON.parse(e.target.result);
+          if (data.logs && typeof data.logs === 'object') {
+            Object.entries(data.logs).forEach(([k, val]) => {
+              if (k.startsWith('danyuan_log_')) localStorage.setItem(k, JSON.stringify(val));
+            });
+          }
+          if (Array.isArray(data.verify)) {
+            localStorage.setItem('danyuan_verify_v1', JSON.stringify(data.verify));
+            initVerificationChecklist();
+          }
+          dailyState = loadDayRecord(activeDateStr);
+          renderTracker();
+          showToast('成功還原修習日曆與效驗紀錄！');
+        } catch (err) {
+          showToast('備份檔格式無效，請選擇正確的 .json 檔案');
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = '';
+    }
 
     // =========================================================================
-    // 5. Transcript Live Search & Highlight
+    // 7. Persistent 7 Verification Indicators
+    // =========================================================================
+    const verifyTitles = [
+      '身體更輕鬆（腰背頸椎鬆活）',
+      '呼吸更自然（貼近脊柱深長）',
+      '足底真承重（前掌參與生根）',
+      '膝蓋不亂頂（力量由足底起）',
+      '腰胯漸鬆活（上下空間貫通）',
+      '胸中堵空減（壓迫心慌減弱）',
+      '空間更立體（隔膜消失重回世界）'
+    ];
+
+    function loadVerificationArray() {
+      try {
+        const raw = localStorage.getItem('danyuan_verify_v1');
+        if (raw) {
+          const arr = JSON.parse(raw);
+          if (Array.isArray(arr) && arr.length === 7) return arr;
+        }
+      } catch (e) {}
+      return Array(7).fill(false);
+    }
+
+    function initVerificationChecklist() {
+      const arr = loadVerificationArray();
+      let count = 0;
+      document.querySelectorAll('#verifyChecklistGrid input[type="checkbox"]').forEach(chk => {
+        const idx = Number(chk.dataset.vidx);
+        chk.checked = !!arr[idx];
+        if (chk.checked) count++;
+        chk.parentElement.classList.toggle('border-jade', chk.checked);
+        chk.parentElement.classList.toggle('bg-jade/10', chk.checked);
+      });
+      document.getElementById('verifyProgressBadge').textContent = `已達成 ${count} / 7 項`;
+    }
+
+    function saveVerificationState() {
+      const arr = Array(7).fill(false);
+      let count = 0;
+      document.querySelectorAll('#verifyChecklistGrid input[type="checkbox"]').forEach(chk => {
+        const idx = Number(chk.dataset.vidx);
+        arr[idx] = chk.checked;
+        if (chk.checked) count++;
+        chk.parentElement.classList.toggle('border-jade', chk.checked);
+        chk.parentElement.classList.toggle('bg-jade/10', chk.checked);
+      });
+      try { localStorage.setItem('danyuan_verify_v1', JSON.stringify(arr)); } catch (e) {}
+      document.getElementById('verifyProgressBadge').textContent = `已達成 ${count} / 7 項`;
+    }
+
+    // =========================================================================
+    // 8. Local Audio Companion Player (Zero Upload, Chapter Timestamp Seeking)
+    // =========================================================================
+    let currentAudioUrl = null;
+
+    function loadLocalAudioFile(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      if (currentAudioUrl) URL.revokeObjectURL(currentAudioUrl);
+      currentAudioUrl = URL.createObjectURL(file);
+      const player = document.getElementById('localAudioPlayer');
+      player.src = currentAudioUrl;
+      document.getElementById('audioFileName').textContent = '🎧 正在伴讀：' + file.name;
+      player.play().catch(() => {});
+      showToast('已載入原音檔！可點擊下方章節按鈕直接跳轉');
+    }
+
+    function seekAudioTo(seconds, label) {
+      const player = document.getElementById('localAudioPlayer');
+      if (!player.src) {
+        showToast('請先點擊左上角「🎵 載入原音檔 (.m4a)」揀選你嘅音訊檔案');
+        return;
+      }
+      player.currentTime = seconds;
+      player.play().catch(() => {});
+      showToast(`已跳轉至：${label}`);
+    }
+
+    function skipAudio(delta) {
+      const player = document.getElementById('localAudioPlayer');
+      if (!player.src) return;
+      player.currentTime = Math.max(0, player.currentTime + delta);
+    }
+
+    function setAudioSpeed(rate) {
+      const player = document.getElementById('localAudioPlayer');
+      player.playbackRate = Number(rate) || 1;
+    }
+
+    // =========================================================================
+    // 9. Upgraded Transcript Reader (Font Size, Fold/Expand, Match Count & Jump)
     // =========================================================================
     const originalTranscriptHTML = document.getElementById('transcriptContent').innerHTML;
+    let chaptersExpanded = true;
+    let currentMatchIdx = 0;
+    let totalMatches = 0;
+
+    function setTranscriptSize(sz) {
+      const box = document.getElementById('transcriptContent');
+      box.classList.remove('ts-size-sm', 'ts-size-md', 'ts-size-lg');
+      box.classList.add('ts-size-' + sz);
+      try { localStorage.setItem('danyuan_ts_size', sz); } catch (e) {}
+    }
+
+    try {
+      const savedSz = localStorage.getItem('danyuan_ts_size');
+      if (savedSz) setTranscriptSize(savedSz);
+    } catch (e) {}
+
+    function toggleSingleChapter(headerEl) {
+      const body = headerEl.nextElementSibling;
+      const arrow = headerEl.querySelector('.chapter-arrow');
+      const isHidden = body.classList.toggle('hidden');
+      if (arrow) arrow.textContent = isHidden ? '▶ 展開' : '▼';
+    }
+
+    function toggleAllChapters() {
+      chaptersExpanded = !chaptersExpanded;
+      document.querySelectorAll('#transcriptContent .transcript-body').forEach(b => {
+        b.classList.toggle('hidden', !chaptersExpanded);
+      });
+      document.querySelectorAll('#transcriptContent .chapter-arrow').forEach(a => {
+        a.textContent = chaptersExpanded ? '▼' : '▶ 展開';
+      });
+      document.getElementById('toggleChaptersBtn').textContent = chaptersExpanded ? '↕ 收合全部章節' : '↕ 展開全部章節';
+    }
 
     function highlightTranscript(keyword) {
       const box = document.getElementById('transcriptContent');
+      const navCtrl = document.getElementById('searchNavControls');
       const q = keyword.trim();
+
       if (!q) {
         box.innerHTML = originalTranscriptHTML;
+        navCtrl.classList.add('hidden');
+        navCtrl.classList.remove('flex');
+        totalMatches = 0;
         return;
       }
+
       const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const regex = new RegExp(`(${escaped})`, 'gi');
       const temp = document.createElement('div');
       temp.innerHTML = originalTranscriptHTML;
+
+      // Ensure all chapters open when searching
+      temp.querySelectorAll('.transcript-body').forEach(b => b.classList.remove('hidden'));
 
       function walkNodes(node) {
         if (node.nodeType === 3) {
@@ -1313,14 +2046,66 @@
       }
       walkNodes(temp);
       box.innerHTML = temp.innerHTML;
+
+      const marks = box.querySelectorAll('mark.hl');
+      totalMatches = marks.length;
+      currentMatchIdx = 0;
+
+      navCtrl.classList.remove('hidden');
+      navCtrl.classList.add('flex');
+
+      if (totalMatches > 0) {
+        focusMatch(0, false);
+      } else {
+        document.getElementById('searchMatchBadge').textContent = '0 處結果';
+      }
+    }
+
+    function focusMatch(idx, shouldScroll = true) {
+      const marks = document.querySelectorAll('#transcriptContent mark.hl');
+      if (!marks.length) return;
+      marks.forEach(m => m.classList.remove('current-match'));
+      currentMatchIdx = (idx + marks.length) % marks.length;
+      const active = marks[currentMatchIdx];
+      active.classList.add('current-match');
+      document.getElementById('searchMatchBadge').textContent = `${currentMatchIdx + 1} / ${marks.length} 處`;
+      if (shouldScroll) {
+        active.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    function stepSearchMatch(dir) {
+      if (totalMatches <= 0) return;
+      focusMatch(currentMatchIdx + dir, true);
     }
 
     // =========================================================================
-    // 6. Clean MS Word (.doc) Export (Includes Official Circle.so URL)
+    // 10. Print PDF & Clean MS Word (.doc) Export (Includes Personal Log!)
     // =========================================================================
+    function buildPersonalSummaryHTML() {
+      const history = getAllPracticedHistory();
+      const verArr = loadVerificationArray();
+      const achieved = verifyTitles.filter((_, i) => verArr[i]);
+      const notesRows = history
+        .filter(h => h.rec.note && h.rec.note.trim())
+        .slice(0, 10)
+        .map(h => `<li><strong>${h.date}</strong>（開足弓 ${Math.floor(h.rec.footSec / 60)} 分鐘 · 落地/陽火 ${h.rec.sets.filter(Boolean).length} 組）：${escapeHTML(h.rec.note)}</li>`)
+        .join('');
+
+      return `
+        <div><strong>個人實修累計天數：</strong>共 ${history.length} 天 ｜ <strong>已達成效驗指標（${achieved.length}/7）：</strong>${achieved.length ? achieved.join('、') : '修習積累中'}</div>
+        ${notesRows ? `<div style="margin-top:4pt;"><strong>近期實修體察日誌：</strong><ul style="margin:3pt 0 0 16pt;">${notesRows}</ul></div>` : ''}
+      `;
+    }
+
+    function prepareAndPrint() {
+      document.getElementById('printPersonalSummary').innerHTML = buildPersonalSummaryHTML();
+      window.print();
+    }
+
     function exportToWord() {
       const scheduleTableHTML = document.querySelector('.schedule-table').outerHTML;
-      const transcriptHTML = originalTranscriptHTML;
+      const personalSummaryHTML = buildPersonalSummaryHTML();
 
       const wordDoc = `
         <html xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -1328,7 +2113,7 @@
               xmlns="http://www.w3.org/TR/REC-html40">
         <head>
           <meta charset="utf-8">
-          <title>古仙煉形築基——內煉篇 | 丹元居 實修講義與完整逐字稿</title>
+          <title>古仙煉形築基——內煉篇 | 丹元居 實修講義與個人修習報告</title>
           <!--[if gte mso 9]>
           <xml>
             <w:WordDocument>
@@ -1343,7 +2128,7 @@
             body { font-family: "PMingLiU", "Microsoft JhengHei", serif; font-size: 11pt; line-height: 1.65; color: #1F1D1A; }
             h1 { font-size: 20pt; color: #9E2A2B; text-align: center; margin-bottom: 4pt; }
             .sub { text-align: center; font-size: 10.5pt; color: #8A651B; font-weight: bold; margin-bottom: 6pt; }
-            .portal { text-align: center; font-size: 10pt; color: #57524A; margin-bottom: 16pt; }
+            .portal { text-align: center; font-size: 10pt; color: #57524A; margin-bottom: 14pt; }
             h2 { font-size: 14pt; color: #8A651B; border-bottom: 1.5pt solid #C89232; padding-bottom: 4pt; margin-top: 18pt; margin-bottom: 8pt; }
             h4 { font-size: 12pt; color: #9E2A2B; margin-top: 12pt; margin-bottom: 4pt; }
             p, li { font-size: 11pt; margin-bottom: 6pt; text-align: justify; }
@@ -1351,6 +2136,7 @@
             th { background-color: #F2EBDD; color: #1F1D1A; font-weight: bold; border: 1pt solid #BDB49E; padding: 6pt; text-align: left; font-size: 10pt; }
             td { border: 1pt solid #D6CEBC; padding: 6pt; vertical-align: top; font-size: 10pt; }
             .box { border: 1pt solid #C89232; background-color: #FAF6EE; padding: 10pt; margin-bottom: 12pt; }
+            .chapter-arrow { display: none; }
             a { color: #9E2A2B; text-decoration: underline; }
           </style>
         </head>
@@ -1358,6 +2144,9 @@
           <h1>古仙煉形築基——內煉篇</h1>
           <div class="sub">丹元居（修身 · 立命 · 守中黃 · 通大道）｜開篇寄語、修習次第與完整逐字稿</div>
           <div class="portal">官方線上學堂網址：<a href="https://danyuanju.circle.so/">https://danyuanju.circle.so/</a></div>
+
+          <h2>零、個人實修進度與體察日誌摘要</h2>
+          <div class="box">${personalSummaryHTML}</div>
 
           <h2>一、核心理念摘要：減法與恢復</h2>
           <div class="box">
@@ -1380,7 +2169,7 @@
           </ul>
 
           <h2>四、開篇寄語及功法修習順序講解（完整繁體逐字稿）</h2>
-          ${transcriptHTML}
+          ${originalTranscriptHTML}
 
           <hr style="margin-top:20pt;border:none;border-top:1pt solid #D6CEBC;" />
           <p style="text-align:center;font-size:9.5pt;color:#57524A;">丹元居官方課程平台：<a href="https://danyuanju.circle.so/">https://danyuanju.circle.so/</a></p>
@@ -1392,13 +2181,17 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = '古仙煉形築基_內煉篇_實修講義與逐字稿.doc';
+      a.download = `古仙煉形築基_內煉篇_實修講義與日誌_${todayStr}.doc`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      showToast('已匯出 Word (.doc) 實修講義');
+      showToast('已匯出包含個人修習日誌的 Word (.doc) 講義');
     }
+
+    // Initialize Views on Load
+    initVerificationChecklist();
+    renderTracker();
   </script>
 </body>
 </html>
